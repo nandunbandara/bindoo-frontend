@@ -3,10 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: '', component: LandingComponent,
+    children: [
+      { path: '', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+    ]
+  },
   { path: 'dashboard', component: DashboardComponent }
 ];
 
