@@ -1,3 +1,47 @@
-<p>
-  signup works!
-</p>
+<div style="margin-top: 15vh;">
+  <p>
+    <!-- <img src="../../../assets/garbage.svg" width="50px" alt=""> -->
+  </p>
+  <p class="bindoo-subtitle">Let us get started on</p>
+  <h1 class="bindoo-heading" style="font-size: 48px; "><span style="color: #673ab7;">bin</span><span
+      style="color: #444;">doo</span></h1>
+  <small></small>
+
+  <p>
+    <mat-form-field appearance="outline" class="bindoo-full-width">
+      <mat-label>Full Name</mat-label>
+      <input matInput placeholder="Ken Miles">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <!-- <mat-hint>Who are you?</mat-hint> -->
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline" class="bindoo-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="kenmiles@bindoo.com">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <!-- <mat-hint>Who are you?</mat-hint> -->
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline" class="bindoo-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" type="password">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <!-- <mat-hint>
+        <a href="#">Forgot Password?</a>
+      </mat-hint> -->
+    </mat-form-field>
+  </p>
+
+  <p>
+    <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;">Let's GO!</button>
+  </p>
+  <div style="text-align: center; margin-bottom: 15vh; font-size: 16px;">
+    <small class="bindoo-full-width">
+      Already have an account? <a [routerLink]="['/']">Login</a>
+    </small>
+  </div>
+</div>

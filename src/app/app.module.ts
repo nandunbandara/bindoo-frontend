@@ -20,8 +20,8 @@ import { LandingComponent } from './pages/landing/landing.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule
   ],
   providers: [],

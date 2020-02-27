@@ -9,8 +9,8 @@ const routes: Routes = [
   {
     path: '', component: LandingComponent,
     children: [
-      { path: '', component: LoginComponent },
-      { path: 'signup', component: SignupComponent },
+      { path: '', component: LoginComponent, data: { animation: 'Login'} },
+      { path: 'signup', component: SignupComponent, data: { animation: 'SignUp'} },
     ]
   },
   { path: 'dashboard', component: DashboardComponent }
