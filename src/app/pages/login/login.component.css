@@ -1,0 +1,18 @@
+.bindoo-full-width {
+    width: 100%;
+}
+
+.bindoo-subtitle {
+    margin-bottom: 0;
+}
+
+.bindoo-heading {
+    margin-top: 0;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../assets/cute-bin.jpg');
+    background-size: cover;
+}

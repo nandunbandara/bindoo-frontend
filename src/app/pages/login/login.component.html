@@ -1,1 +1,44 @@
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<div class="container-fluid">
+  <div class="row" style="height: 100vh;">
+    <div class="col-md-4 offset-md-1">
+      
+      <div style="margin-top: 20vh;">
+        <p class="bindoo-subtitle">Welcome to</p>
+        <h1 class="bindoo-heading">bindoo</h1>
+        
+        <p>
+          <mat-form-field appearance="outline" class="bindoo-full-width">
+            <mat-label>Username / Email</mat-label>
+            <input matInput placeholder="abc@bindoo.com">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Who are you?</mat-hint> -->
+          </mat-form-field>
+        </p>
+        
+        <p>
+          <mat-form-field appearance="outline" class="bindoo-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" type="password">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>
+              <a href="#">Forgot Password?</a>
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        
+        <p>
+          <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;">Login</button>
+        </p>
+        <div style="text-align: center;">
+          <small class="bindoo-full-width">
+            Dont have an account? <a href="#">Signup</a>
+          </small>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6 offset-md-1">
+      <div class="image-container"></div>
+    </div>
+  </div>
+</div>
