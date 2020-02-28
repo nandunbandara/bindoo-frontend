@@ -56,8 +56,6 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    console.log(this.emailFormControl.errors);
-
     this.isLoading = true;
 
     this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then(user => {
