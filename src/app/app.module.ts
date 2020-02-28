@@ -25,6 +25,7 @@ import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicl
 import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
 import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-table/users-table.component';
 import { MatTableModule } from '@angular/material';
+import { UserCreateComponent } from './pages/dashboard/right-panel/users/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatTableModule } from '@angular/material';
     UsersComponent,
     VehiclesComponent,
     StoreComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
