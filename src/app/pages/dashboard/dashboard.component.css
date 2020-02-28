@@ -1,12 +1,15 @@
-.example-card {
-  max-width: 300px;
+.wrapper {
+  width: 100%;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.left-panel {
+  width: 18%;
+  /* display: inline-block; */
 }
 
-.spacer {
-    flex: 1 1 auto;
+.right-panel {
+  width: 82%;
+  display: inline-block;
+  float: right;
+  padding: 20px;
 }

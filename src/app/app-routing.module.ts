@@ -7,6 +7,11 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
+import { LocationsComponent } from './pages/dashboard/right-panel/locations/locations.component';
+import { BinsComponent } from './pages/dashboard/right-panel/bins/bins.component';
+import { UsersComponent } from './pages/dashboard/right-panel/users/users.component';
+import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
+import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -18,16 +23,20 @@ const routes: Routes = [
     // canActivate: [AngularFireAuthGuard],
     // data: { authGuardPipe: redirectLoggedInToItems },
     children: [
-      { path: '', component: LoginComponent, data: { animation: 'Login'} },
+      { path: '', component: LoginComponent, data: { animation: 'Login' } },
       { path: 'signup', component: SignupComponent, data: { animation: 'SignUp' } },
-      { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification'} },
-      { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation'} }
+      { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification' } },
+      { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation' } }
     ]
   },
   {
-    path: 'dashboard', component: DashboardComponent,
-    // canActivate: [AngularFireAuthGuard],
-    // data: { authGuardPipe: redirectUnauthorizedTo }
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: 'locations', component: LocationsComponent },
+      { path: 'bins', component: BinsComponent },
+      { path: 'store', component: StoreComponent },
+      { path: 'vehicles', component: VehiclesComponent },
+      { path: 'users', component: UsersComponent },
+    ]
   }
 ];
 

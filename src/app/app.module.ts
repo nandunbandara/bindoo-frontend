@@ -18,6 +18,11 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
 import { LeftPanelComponent } from './pages/dashboard/left-panel/left-panel.component';
+import { LocationsComponent } from './pages/dashboard/right-panel/locations/locations.component';
+import { BinsComponent } from './pages/dashboard/right-panel/bins/bins.component';
+import { UsersComponent } from './pages/dashboard/right-panel/users/users.component';
+import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
+import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { LeftPanelComponent } from './pages/dashboard/left-panel/left-panel.comp
     LandingComponent,
     EmailVerificationComponent,
     PaymentInformationComponent,
-    LeftPanelComponent
+    LeftPanelComponent,
+    LocationsComponent,
+    BinsComponent,
+    UsersComponent,
+    VehiclesComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
