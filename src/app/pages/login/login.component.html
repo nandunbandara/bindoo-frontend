@@ -16,7 +16,7 @@
             [errorStateMatcher]="Matcher">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <!-- <mat-hint>Who are you?</mat-hint> -->
-          <mat-error *ngIf="EmailFormControl.hasError('invalid')">
+          <mat-error *ngIf="EmailFormControl.hasError('required') || EmailFormControl.hasError('email')">
             Please enter a valid email address
           </mat-error>
           <mat-error *ngIf="EmailFormControl.hasError('incorrect')">

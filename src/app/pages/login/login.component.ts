@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   private isLoading: boolean;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,14 +56,14 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    console.log(this.emailFormControl.value, this.passwordFormControl.value);
+    console.log(this.emailFormControl.errors);
+
     this.isLoading = true;
 
     this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then(user => {
-      console.log(user);
+      this.router.navigate(['dashboard']);
       this.isLoading = false;
     }).catch(err => {
-      console.log(err);
       switch (err.code) {
         case 'auth/user-not-found':
           this.emailFormControl.setErrors({incorrect: true});
