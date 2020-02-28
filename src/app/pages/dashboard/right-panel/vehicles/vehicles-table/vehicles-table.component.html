@@ -1,0 +1,41 @@
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Vehicles</h3>
+      <button mat-raised-button color="primary" routerLink="add">+ Add vehicle</button>
+    </div>
+  </div>
+</header>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="registrationNo">
+    <th mat-header-cell *matHeaderCellDef>Registration No</th>
+    <td mat-cell *matCellDef="let element"> {{ element.registrationNo }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef>Model</th>
+    <td mat-cell *matCellDef="let element"> {{ element.model }} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="make">
+    <th mat-header-cell *matHeaderCellDef>Make</th>
+    <td mat-cell *matCellDef="let element"> {{ element.make }} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="capacity">
+    <th mat-header-cell *matHeaderCellDef>Capacity</th>
+    <td mat-cell *matCellDef="let element"> {{ element.capacity }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

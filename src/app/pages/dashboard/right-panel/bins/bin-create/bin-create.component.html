@@ -1,0 +1,40 @@
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Bins > Add bin</h3>
+    </div>
+  </div>
+</header>
+
+<mat-card>
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="form-title">Bin details</p>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" name="name" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Description" name="description" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Capacity</mat-label>
+          <input matInput placeholder="Capacity" name="capacity" ngModel required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" type="submit">Save bin</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

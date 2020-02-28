@@ -1,0 +1,62 @@
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Users > Add user</h3>
+    </div>
+  </div>
+</header>
+
+<mat-card>
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="form-title">User details</p>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="First name" name="firstName" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Last name</mat-label>
+          <input matInput placeholder="Last name" name="lastName" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Email address</mat-label>
+          <input matInput type="email" placeholder="Email address" name="email" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>User type</mat-label>
+          <mat-select name="userType" ngModel required>
+            <mat-option *ngFor="let userType of userTypes" [value]="userType.value">
+              {{ userType.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" name="password" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm password</mat-label>
+          <input matInput type="password" placeholder="Confirm password" name="confirmPassword" ngModel required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" type="submit">Save user</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

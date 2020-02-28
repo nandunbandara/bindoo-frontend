@@ -1,0 +1,107 @@
+.wrapper {
+    display: inline-block;
+    position: fixed;
+    background-color: #F5F5F5;
+    padding: 30px 20px;
+    height: 100vh;
+    width: 18%;
+    color: #673AB6;
+}
+
+h5, p {
+    margin: 0;
+}
+
+h5 {
+    font-weight: 600;
+}
+
+.wrapper-text {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.profile-avatar {
+    width: 40px;
+    position: relative;
+    top: 5px;
+}
+
+.wrapper-menu {
+    margin-top: 50px;
+}
+
+ul li {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+ul li img {
+    margin-right: 20px;
+    width: 20px;
+}
+
+ul a li {
+    color: #673AB6;
+}
+
+ul a li p {
+    display: inline-block;
+    position: relative;
+    top: -5px;
+}
+
+ul a li:hover {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button img {
+    margin-right: 20px;
+    width: 20px;
+}
+
+button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 2px 10px;
+    text-align: left;
+}
+
+button:hover {
+    background: #ffffff42;
+    width: 100%;
+    text-align: left;
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.is-active {
+    background: #fff;
+    border-radius: 5px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.wrapper-performance {
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+}
+
+.wrapper-performance p {
+    color: #2E4491;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.wrapper-stat {
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 16px;
+}

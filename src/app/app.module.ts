@@ -17,6 +17,21 @@ import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
+import { LeftPanelComponent } from './pages/dashboard/left-panel/left-panel.component';
+import { LocationsComponent } from './pages/dashboard/right-panel/locations/locations.component';
+import { BinsComponent } from './pages/dashboard/right-panel/bins/bins.component';
+import { UsersComponent } from './pages/dashboard/right-panel/users/users.component';
+import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
+import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
+import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-table/users-table.component';
+import { MatTableModule, MatBadgeModule } from '@angular/material';
+import { UserCreateComponent } from './pages/dashboard/right-panel/users/user-create/user-create.component';
+import { VehiclesTableComponent } from './pages/dashboard/right-panel/vehicles/vehicles-table/vehicles-table.component';
+import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/vehicle-create/vehicle-create.component';
+import { BinsTableComponent } from './pages/dashboard/right-panel/bins/bins-table/bins-table.component';
+import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-create/bin-create.component';
+import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/locations-view/locations-view.component';
+import { CreateLocationComponent } from './pages/dashboard/right-panel/locations/create-location/create-location.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +41,21 @@ import { PaymentInformationComponent } from './pages/payment-information/payment
     DashboardComponent,
     LandingComponent,
     EmailVerificationComponent,
-    PaymentInformationComponent
+    PaymentInformationComponent,
+    LeftPanelComponent,
+    LocationsComponent,
+    BinsComponent,
+    UsersComponent,
+    VehiclesComponent,
+    StoreComponent,
+    UsersTableComponent,
+    UserCreateComponent,
+    VehiclesTableComponent,
+    VehicleCreateComponent,
+    BinsTableComponent,
+    BinCreateComponent,
+    LocationsViewComponent,
+    CreateLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +64,9 @@ import { PaymentInformationComponent } from './pages/payment-information/payment
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatBadgeModule
   ],
   providers: [
     AngularFireAuth,

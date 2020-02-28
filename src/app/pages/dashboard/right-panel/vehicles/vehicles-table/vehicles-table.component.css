@@ -1,0 +1,58 @@
+table {
+    width: 100%;
+}
+
+h3 {
+    color: #673AB6;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 20px 0 0;
+    font-size: 20px;
+}
+
+header {
+    margin-bottom: 15px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-cell {
+    font-size: 13px;
+}
+
+.mat-header-cell {
+    font-weight: 600;
+    color: #673AB6;
+    font-size: 14px;
+}
+
+.user-name a {
+    color: #673AB6; 
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text-red {
+    color: #EB4D4B;
+    font-weight: 600;
+}
+
+.text-green {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+.user-type p,
+.status p {
+    margin: 0;
+}
+
+.mat-spinner {
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+}
