@@ -6,29 +6,46 @@
   <h1 class="bindoo-heading" style="font-size: 48px; "><span style="color: #673ab7;">bin</span><span
       style="color: #444;">doo</span></h1>
 
-  <p>
-    <mat-form-field appearance="outline" class="bindoo-full-width">
-      <mat-label>Username / Email</mat-label>
-      <input matInput placeholder="abc@bindoo.com">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <!-- <mat-hint>Who are you?</mat-hint> -->
-    </mat-form-field>
-  </p>
+  <form name="loginForm">
 
-  <p>
-    <mat-form-field appearance="outline" class="bindoo-full-width">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="Password" type="password">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>
-        <a href="#">Forgot Password?</a>
-      </mat-hint>
-    </mat-form-field>
-  </p>
+      <p>
+        <mat-form-field appearance="outline" class="bindoo-full-width">
+          <mat-label>Username / Email</mat-label>
+          <input matInput placeholder="abc@bindoo.com" [formControl]="EmailFormControl"
+            name="email"
+            [errorStateMatcher]="Matcher">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Who are you?</mat-hint> -->
+          <mat-error *ngIf="EmailFormControl.hasError('invalid')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="EmailFormControl.hasError('incorrect')">
+            User not found for provided email! Please check again.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="outline" class="bindoo-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" [formControl]="PasswordFormControl" 
+            type="password" name="password">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error>
+            Incorrect password! Please check again.
+          </mat-error>
+          <mat-hint>
+            <a href="#">Forgot Password?</a>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;"
+          (click)="login()">Login</button>
+      </p>
 
-  <p>
-    <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;">Login</button>
-  </p>
+  </form>
   <div style="text-align: center; margin-bottom: 15vh; font-size: 16px;">
     <small class="bindoo-full-width">
       Dont have an account? <a [routerLink]="['/signup']" >Signup</a>
