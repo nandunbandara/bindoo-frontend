@@ -23,6 +23,8 @@ import { BinsComponent } from './pages/dashboard/right-panel/bins/bins.component
 import { UsersComponent } from './pages/dashboard/right-panel/users/users.component';
 import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
 import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
+import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-table/users-table.component';
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { StoreComponent } from './pages/dashboard/right-panel/store/store.compon
     BinsComponent,
     UsersComponent,
     VehiclesComponent,
-    StoreComponent
+    StoreComponent,
+    UsersTableComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { StoreComponent } from './pages/dashboard/right-panel/store/store.compon
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [
     AngularFireAuth,

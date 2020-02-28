@@ -12,6 +12,7 @@ import { BinsComponent } from './pages/dashboard/right-panel/bins/bins.component
 import { UsersComponent } from './pages/dashboard/right-panel/users/users.component';
 import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
 import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
+import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-table/users-table.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -35,7 +36,11 @@ const routes: Routes = [
       { path: 'bins', component: BinsComponent },
       { path: 'store', component: StoreComponent },
       { path: 'vehicles', component: VehiclesComponent },
-      { path: 'users', component: UsersComponent },
+      {
+        path: 'users', component: UsersComponent, children: [
+          { path: '', component: UsersTableComponent },
+        ]
+      },
     ]
   }
 ];
