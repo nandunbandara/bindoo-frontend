@@ -14,7 +14,12 @@
           <input matInput placeholder="abc@bindoo.com" [formControl]="EmailFormControl"
             name="email"
             [errorStateMatcher]="Matcher">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon matSuffix *ngIf="!(EmailFormControl.hasError('required') || EmailFormControl.hasError('email'))">
+            sentiment_very_satisfied
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="EmailFormControl.hasError('required') || EmailFormControl.hasError('email')">
+            sentiment_very_dissatisfied
+          </mat-icon>
           <!-- <mat-hint>Who are you?</mat-hint> -->
           <mat-error *ngIf="EmailFormControl.hasError('required') || EmailFormControl.hasError('email')">
             Please enter a valid email address
@@ -30,8 +35,13 @@
           <mat-label>Password</mat-label>
           <input matInput placeholder="Password" [formControl]="PasswordFormControl" 
             type="password" name="password">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-error>
+          <mat-icon matSuffix *ngIf="!PasswordFormControl.hasError('incorrect')">
+            sentiment_very_satisfied
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="PasswordFormControl.hasError('incorrect')">
+            sentiment_very_dissatisfied
+          </mat-icon>
+          <mat-error *ngIf="PasswordFormControl.hasError('incorrect')">
             Incorrect password! Please check again.
           </mat-error>
           <mat-hint>
