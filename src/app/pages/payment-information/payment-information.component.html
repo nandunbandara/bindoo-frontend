@@ -1,4 +1,4 @@
-<div style="margin-top: 15vh;">
+<div style="margin-top: 5vh;">
   <p>
     <!-- <img src="../../../assets/garbage.svg" width="50px" alt=""> -->
   </p>
@@ -6,12 +6,13 @@
   <h1 class="bindoo-heading" style="font-size: 48px; "><span style="color: #673ab7;">bin</span><span
       style="color: #444;">doo</span></h1>
   <small style="color: #aaa; font-size: 14px;">Step 3 / 3</small>
+  <p style="font-weight: 500;">Payment Information</p>
 
   <div class="card" style="margin-top: 20px;">
     <div class="card__front card__part">
       <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
       <img class="card__front-logo card__logo"
-        src="https://www.fireeye.com/partners/strategic-technology-partners/visa-fireeye-cyber-watch-program/_jcr_content/content-par/grid_20_80_full/grid-20-left/image.img.png/1505254557388.png">
+        [src]="cardTypeImgUrl">
       <p class="card_numer">{{cardNumber}}</p>
       <div class="card__space-75">
         <span class="card__label">Card holder</span>
@@ -31,7 +32,7 @@
         </div>
         <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
         <img class="card__back-logo card__logo"
-          src="https://www.fireeye.com/partners/strategic-technology-partners/visa-fireeye-cyber-watch-program/_jcr_content/content-par/grid_20_80_full/grid-20-left/image.img.png/1505254557388.png">
+          [src]="cardTypeImgUrl">
   
       </div>
     </div>
