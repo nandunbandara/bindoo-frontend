@@ -30,6 +30,7 @@ import { VehiclesTableComponent } from './pages/dashboard/right-panel/vehicles/v
 import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/vehicle-create/vehicle-create.component';
 import { BinsTableComponent } from './pages/dashboard/right-panel/bins/bins-table/bins-table.component';
 import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-create/bin-create.component';
+import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/locations-view/locations-view.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-creat
     VehiclesTableComponent,
     VehicleCreateComponent,
     BinsTableComponent,
-    BinCreateComponent
+    BinCreateComponent,
+    LocationsViewComponent
   ],
   imports: [
     BrowserModule,
