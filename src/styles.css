@@ -29,3 +29,16 @@ a {
   border-top-color: #000000;
   animation: spinner .8s linear infinite;
 }
+
+.bindoo-full-width {
+  width: 100%;
+}
+
+.bindoo-subtitle {
+  margin-bottom: 0;
+  color: #666;
+}
+
+.bindoo-heading {
+  margin-top: 0;
+}

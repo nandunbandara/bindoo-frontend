@@ -15,6 +15,8 @@ import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
+import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    LandingComponent
+    LandingComponent,
+    EmailVerificationComponent,
+    PaymentInformationComponent
   ],
   imports: [
     BrowserModule,

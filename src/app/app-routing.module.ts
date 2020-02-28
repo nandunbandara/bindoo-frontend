@@ -5,6 +5,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
+import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -17,7 +19,9 @@ const routes: Routes = [
     // data: { authGuardPipe: redirectLoggedInToItems },
     children: [
       { path: '', component: LoginComponent, data: { animation: 'Login'} },
-      { path: 'signup', component: SignupComponent, data: { animation: 'SignUp'} },
+      { path: 'signup', component: SignupComponent, data: { animation: 'SignUp' } },
+      { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification'} },
+      { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation'} }
     ]
   },
   {
