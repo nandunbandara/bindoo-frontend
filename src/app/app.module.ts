@@ -24,10 +24,12 @@ import { UsersComponent } from './pages/dashboard/right-panel/users/users.compon
 import { VehiclesComponent } from './pages/dashboard/right-panel/vehicles/vehicles.component';
 import { StoreComponent } from './pages/dashboard/right-panel/store/store.component';
 import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-table/users-table.component';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatBadgeModule } from '@angular/material';
 import { UserCreateComponent } from './pages/dashboard/right-panel/users/user-create/user-create.component';
 import { VehiclesTableComponent } from './pages/dashboard/right-panel/vehicles/vehicles-table/vehicles-table.component';
 import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/vehicle-create/vehicle-create.component';
+import { BinsTableComponent } from './pages/dashboard/right-panel/bins/bins-table/bins-table.component';
+import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-create/bin-create.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/v
     UsersTableComponent,
     UserCreateComponent,
     VehiclesTableComponent,
-    VehicleCreateComponent
+    VehicleCreateComponent,
+    BinsTableComponent,
+    BinCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/v
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule
   ],
   providers: [
     AngularFireAuth,

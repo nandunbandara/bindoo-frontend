@@ -16,6 +16,8 @@ import { UsersTableComponent } from './pages/dashboard/right-panel/users/users-t
 import { UserCreateComponent } from './pages/dashboard/right-panel/users/user-create/user-create.component';
 import { VehiclesTableComponent } from './pages/dashboard/right-panel/vehicles/vehicles-table/vehicles-table.component';
 import { VehicleCreateComponent } from './pages/dashboard/right-panel/vehicles/vehicle-create/vehicle-create.component';
+import { BinsTableComponent } from './pages/dashboard/right-panel/bins/bins-table/bins-table.component';
+import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-create/bin-create.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -36,7 +38,12 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'locations', component: LocationsComponent },
-      { path: 'bins', component: BinsComponent },
+      {
+        path: 'bins', component: BinsComponent, children: [
+          { path: '', component: BinsTableComponent },
+          { path: 'add', component: BinCreateComponent },
+        ]
+      },
       { path: 'store', component: StoreComponent },
       {
         path: 'vehicles', component: VehiclesComponent, children: [
