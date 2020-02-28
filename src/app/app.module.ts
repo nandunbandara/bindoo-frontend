@@ -17,6 +17,7 @@ import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { PaymentInformationComponent } from './pages/payment-information/payment-information.component';
+import { LeftPanelComponent } from './pages/dashboard/left-panel/left-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PaymentInformationComponent } from './pages/payment-information/payment
     DashboardComponent,
     LandingComponent,
     EmailVerificationComponent,
-    PaymentInformationComponent
+    PaymentInformationComponent,
+    LeftPanelComponent
   ],
   imports: [
     BrowserModule,
