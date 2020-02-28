@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   private matcher: LoginErrorStateMatcher;
   private emailFormControl: FormControl;
   private passwordFormControl: FormControl;
+  private isLoading: boolean;
 
   constructor(
     private authService: AuthService
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       Validators.email
     ]);
     this.passwordFormControl = new FormControl('', []);
+    this.isLoading = false;
   }
 
   public get Matcher(): ErrorStateMatcher {
@@ -47,12 +49,18 @@ export class LoginComponent implements OnInit {
     return this.passwordFormControl;
   }
 
+  public get getLoadingState(): boolean {
+    return this.isLoading;
+  }
+
   login() {
 
     console.log(this.emailFormControl.value, this.passwordFormControl.value);
+    this.isLoading = true;
 
     this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then(user => {
       console.log(user);
+      this.isLoading = false;
     }).catch(err => {
       console.log(err);
       switch (err.code) {
@@ -63,6 +71,7 @@ export class LoginComponent implements OnInit {
           this.passwordFormControl.setErrors({ incorrect: true });
           break;
       }
+      this.isLoading = false;
     });
 
   }

@@ -41,7 +41,7 @@
       </p>
       
       <p>
-        <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;"
+        <button mat-raised-button class="bindoo-full-width" [class.spinner]="getLoadingState" [disabled]="getLoadingState" color="primary" style="height: 50px;"
           (click)="login()">Login</button>
       </p>
 
