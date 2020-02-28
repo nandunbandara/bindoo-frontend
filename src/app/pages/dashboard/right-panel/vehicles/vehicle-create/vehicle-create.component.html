@@ -1,3 +1,46 @@
-<p>
-  vehicle-create works!
-</p>
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Vechicles > Add vehicle</h3>
+    </div>
+  </div>
+</header>
+
+<mat-card>
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="form-title">Vehicle details</p>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Registration No.</mat-label>
+          <input matInput placeholder="Registration No." name="registrationNo" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Model</mat-label>
+          <input matInput placeholder="Model" name="model" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Make</mat-label>
+          <input matInput placeholder="Make" name="make" ngModel required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Capacity</mat-label>
+          <input matInput placeholder="Capacity" name="capacity" ngModel required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" type="submit">Save vehicle</button>
+      </div>
+    </div>
+  </form>
+</mat-card>
