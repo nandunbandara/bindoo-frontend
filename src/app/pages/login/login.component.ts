@@ -59,7 +59,11 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then(user => {
-      this.router.navigate(['dashboard']);
+      if (user.user.emailVerified) {
+        this.router.navigate(['dashboard']);
+      } else {
+        this.router.navigate(['emailverification']);
+      }
       this.isLoading = false;
     }).catch(err => {
       switch (err.code) {
