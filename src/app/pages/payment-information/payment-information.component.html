@@ -45,7 +45,7 @@
     <p>
       <mat-form-field appearance="outline" class="bindoo-full-width">
         <mat-label>Card Number</mat-label>
-        <input matInput placeholder="XXXX XXXX XXXX XXXX" [(ngModel)]="cardNumber" name="cardNumber" (keyup)="onUpdateCardNumber($event)">
+        <input matInput placeholder="XXXX XXXX XXXX XXXX" [(ngModel)]="cardNumber" name="cardNumber" (keyup)="onUpdateCardNumber()">
         <!-- <mat-icon matSuffix >
           sentiment_very_satisfied
         </mat-icon>
@@ -75,7 +75,7 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline" class="bindoo-full-width">
           <mat-label>Expiry</mat-label>
-          <input matInput placeholder="MM/YY" name="expiry" [(ngModel)]="expiry" [errorStateMatcher]="Matcher">
+          <input matInput placeholder="MM/YY" name="expiry" [(ngModel)]="expiry">
           <!-- <mat-icon matSuffix >
                           sentiment_very_satisfied
                         </mat-icon>
@@ -88,7 +88,7 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline" class="bindoo-full-width">
           <mat-label>CVC</mat-label>
-          <input matInput placeholder="xxx" name="cvc" [(ngModel)]="cvc" [errorStateMatcher]="Matcher">
+          <input matInput placeholder="xxx" name="cvc" [(ngModel)]="cvc">
           <!-- <mat-icon matSuffix >
                                 sentiment_very_satisfied
                               </mat-icon>
@@ -102,7 +102,7 @@
     
     
     <p>
-      <button mat-raised-button class="bindoo-full-width" [class.spinner]="getLoadingState" [disabled]="getLoadingState"
+      <button mat-raised-button class="bindoo-full-width"
         color="primary" style="height: 50px;">Submit</button>
     </p>
 

@@ -9,3 +9,7 @@ h3 {
 header {
     margin-bottom: 15px;
 }
+
+.card {
+    max-width: 100px;
+}

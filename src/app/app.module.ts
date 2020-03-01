@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LandingComponent } from './pages/landing/landing.component';
-
+import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +32,7 @@ import { BinsTableComponent } from './pages/dashboard/right-panel/bins/bins-tabl
 import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-create/bin-create.component';
 import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/locations-view/locations-view.component';
 import { CreateLocationComponent } from './pages/dashboard/right-panel/locations/create-location/create-location.component';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 @NgModule({
   declarations: [
@@ -63,14 +64,16 @@ import { CreateLocationComponent } from './pages/dashboard/right-panel/locations
     AppRoutingModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthGuardModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatBadgeModule
+    MatBadgeModule,
+    HttpClientModule,
   ],
   providers: [
     AngularFireAuth,
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

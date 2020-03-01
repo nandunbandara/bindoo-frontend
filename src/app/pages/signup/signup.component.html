@@ -7,38 +7,53 @@
       style="color: #444;">doo</span></h1>
   <small style="color: #aaa; font-size: 14px;">Step 1 / 3</small>
 
-  <p>
-    <mat-form-field appearance="outline" class="bindoo-full-width">
-      <mat-label>Full Name</mat-label>
-      <input matInput placeholder="Ken Miles">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <!-- <mat-hint>Who are you?</mat-hint> -->
-    </mat-form-field>
-  </p>
+  <form name="signupForm">
+      <p>
+        <mat-form-field appearance="outline" class="bindoo-full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="Ken Miles" [formControl]="NameFormControl" 
+          name="fullname" [errorStateMatcher]="Matcher">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Who are you?</mat-hint> -->
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="outline" class="bindoo-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="kenmiles@bindoo.com" [formControl]="EmailFormControl" 
+          name="email" [errorStateMatcher]="Matcher">
+          <mat-icon matSuffix *ngIf="!(EmailFormControl.hasError('required') || EmailFormControl.hasError('email'))">
+            sentiment_very_satisfied
+          </mat-icon>
+          <mat-icon matSuffix *ngIf="EmailFormControl.hasError('required') || EmailFormControl.hasError('email')">
+            sentiment_very_dissatisfied
+          </mat-icon>
+          <!-- <mat-hint>Who are you?</mat-hint> -->
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="outline" class="bindoo-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" type="password" [formControl]="PasswordFormControl" 
+          name="password" [errorStateMatcher]="Matcher">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>
+              <a href="#">Forgot Password?</a>
+            </mat-hint> -->
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <button mat-raised-button class="bindoo-full-width"
+        color="primary" style="height: 50px;" (click)="signup()" 
+        [class.spinner]="getLoadingState" [disabled]="getLoadingState">
+          Let's GO!
+        </button>
+      </p>
+  </form>
 
-  <p>
-    <mat-form-field appearance="outline" class="bindoo-full-width">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="kenmiles@bindoo.com">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <!-- <mat-hint>Who are you?</mat-hint> -->
-    </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field appearance="outline" class="bindoo-full-width">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="Password" type="password">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <!-- <mat-hint>
-        <a href="#">Forgot Password?</a>
-      </mat-hint> -->
-    </mat-form-field>
-  </p>
-
-  <p>
-    <button mat-raised-button class="bindoo-full-width" color="primary" style="height: 50px;">Let's GO!</button>
-  </p>
   <div style="text-align: center; margin-bottom: 15vh; font-size: 16px;">
     <small class="bindoo-full-width">
       Already have an account? <a [routerLink]="['/']">Login</a>

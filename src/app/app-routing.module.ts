@@ -28,8 +28,8 @@ const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
 const routes: Routes = [
   {
     path: '', component: LandingComponent,
-    // canActivate: [AngularFireAuthGuard],
-    // data: { authGuardPipe: redirectLoggedInToItems },
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToItems },
     children: [
       { path: '', component: LoginComponent, data: { animation: 'Login' } },
       { path: 'signup', component: SignupComponent, data: { animation: 'SignUp' } },
@@ -38,7 +38,13 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'dashboard', component: DashboardComponent, children: [
+    path: 'dashboard', component: DashboardComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      {
+        path: '', redirectTo: 'locations', pathMatch: 'full'
+      },
       {
         path: 'locations', component: LocationsComponent, children: [
           { path: '', component: LocationsViewComponent },
@@ -69,7 +75,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
