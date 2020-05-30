@@ -77,7 +77,6 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['emailverification']);
         this.isLoading = false;
       });
-      console.log(response);
     }, (err: any) => {
         
     });
