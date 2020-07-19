@@ -26,4 +26,16 @@ export class AuthService {
     return this.http.post(`${environment.apihost}/users`, { name, email, password, userType: 1 });
   }
 
+  public getCurrentUser() {
+    return this.afAuth.authState;
+  }
+
+  public verifyEmail(uid: string, token: string) {
+    return this.http.put(`${environment.apihost}/users/${uid}/email`, {token});
+  }
+
+  public sendVerificationEmail(uid: string,) {
+    return this.http.post(`${environment.apihost}/users/${uid}/email`, {});
+  }
+
 }

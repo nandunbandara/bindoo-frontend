@@ -29,12 +29,10 @@ const routes: Routes = [
   {
     path: '', component: LandingComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectLoggedInToItems },
+    // data: { authGuardPipe: redirectLoggedInToItems },
     children: [
       { path: '', component: LoginComponent, data: { animation: 'Login' } },
       { path: 'signup', component: SignupComponent, data: { animation: 'SignUp' } },
-      { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification' } },
-      { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation' } }
     ]
   },
   {
@@ -71,7 +69,9 @@ const routes: Routes = [
         ]
       },
     ]
-  }
+  },
+  { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification' } },
+  { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation' } }
 ];
 
 @NgModule({

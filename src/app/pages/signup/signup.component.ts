@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
+import { APIResponse } from 'src/app/helpers/api-response';
 
 export class SignUpErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -72,13 +73,19 @@ export class SignupComponent implements OnInit {
       this.nameFormControl.value,
       this.emailFormControl.value,
       this.passwordFormControl.value
-    ).subscribe((response: any) => {
-      this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then(user => {
-        this.router.navigate(['emailverification']);
-        this.isLoading = false;
+    ).subscribe((response: APIResponse) => {
+      this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).then((user) => {
+        this.authService.getCurrentUser().subscribe((user: firebase.User) => {
+          this.authService.sendVerificationEmail(user.uid).subscribe((emailResponse: APIResponse) => {
+            if (response.success) {
+              this.router.navigate(['emailverification']);
+              this.isLoading = false;
+            }
+          });
+        });
       });
     }, (err: any) => {
-        
+        console.log(err);
     });
   }
 

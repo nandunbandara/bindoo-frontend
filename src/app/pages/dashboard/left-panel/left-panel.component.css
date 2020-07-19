@@ -1,11 +1,12 @@
 .wrapper {
     display: inline-block;
     position: fixed;
-    background-color: #F5F5F5;
+    background-color: white;
     padding: 30px 20px;
     height: 100vh;
     width: 15%;
-    color: #673AB6;
+    color: rgb(148, 157, 170);
+    border-right: 1px solid rgb(148, 157, 170, 0.1);
 }
 
 h5, p {
@@ -42,7 +43,7 @@ ul li img {
 }
 
 ul a li {
-    color: #673AB6;
+    color: rgb(148, 157, 170);
 }
 
 ul a li p {
