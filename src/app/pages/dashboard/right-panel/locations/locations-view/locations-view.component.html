@@ -22,14 +22,16 @@
     
       <!-- Name Column -->
       <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
       </ng-container>
     
       <!-- Weight Column -->
       <ng-container matColumnDef="verified">
-        <th mat-header-cell *matHeaderCellDef>User type</th>
-        <td mat-cell *matCellDef="let element"> {{ element.userType }} </td>
+        <th mat-header-cell *matHeaderCellDef>Approved</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="badge" [class.badge-success]="element.verified" [class.badge-danger]="!element.verified">{{element.verified ? 'Approved' : 'Pending Approval'}}</span>
+        </td>
       </ng-container>
     
       <!-- Symbol Column -->

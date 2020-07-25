@@ -13,3 +13,7 @@ header {
 .card {
     max-width: 100px;
 }
+
+table {
+    width: 100%;
+}

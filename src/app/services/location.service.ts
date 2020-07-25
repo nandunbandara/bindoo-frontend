@@ -19,4 +19,8 @@ export class LocationService {
     return this.http.get(`${environment.apihost}/users/${uid}/locations`);
   }
 
+  getLocationsByCouncil(councilId: string) {
+    return this.http.get(`${environment.apihost}/councils/${councilId}`);
+  }
+
 }
