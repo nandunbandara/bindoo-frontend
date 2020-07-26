@@ -25,7 +25,7 @@ h5 {
 .profile-avatar {
     width: 40px;
     position: relative;
-    top: 5px;
+    top: -10px;
 }
 
 .wrapper-menu {
@@ -40,6 +40,8 @@ ul li {
 ul li img {
     margin-right: 20px;
     width: 20px;
+    position: relative;
+    top: -7px;
 }
 
 ul a li {
@@ -105,4 +107,12 @@ a:hover {
 
 .progress {
     height: 16px;
+}
+
+.name {
+    font-size: 16px;
+}
+
+.user-type {
+    font-size: 14px;
 }
