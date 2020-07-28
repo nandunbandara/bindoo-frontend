@@ -33,6 +33,7 @@ import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-creat
 import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/locations-view/locations-view.component';
 import { CreateLocationComponent } from './pages/dashboard/right-panel/locations/create-location/create-location.component';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { InvoicesComponent } from './pages/dashboard/right-panel/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     BinsTableComponent,
     BinCreateComponent,
     LocationsViewComponent,
-    CreateLocationComponent
+    CreateLocationComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,

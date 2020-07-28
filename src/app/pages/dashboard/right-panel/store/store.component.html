@@ -1,3 +1,112 @@
-<p>
-  store works!
-</p>
+<header>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Store</h3><br>
+      <small style="position: relative; top: -5px; margin-bottom: 1.5rem;">The Bindoo store for all your recyclables. Make money by recycling.</small><br>
+      <button mat-raised-button color="primary" routerLink="add">+ Add Item for Pickup</button>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Find recycled items using their name">
+        <mat-hint>Find recycled items using their name</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+</header>
+
+<div class="row" style="margin-top: 1.5rem">
+  <div class="col-md-2">
+    <p class="subsection">
+      Filters
+    </p>
+    <div class="filters-wrapper">
+      <div class="container-fluid">
+        <div class="row" style="margin-bottom: 0.5rem;">
+          <small>Price</small>
+        </div>
+        <div class="row" style="font-size: 12px;">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Under Rs. 100.00</mat-radio-button>
+            <mat-radio-button value="2">Rs. 101.00 to Rs. 1000.00</mat-radio-button>
+            <mat-radio-button value="3">Rs. 1001.00 to Rs. 2000.00</mat-radio-button>
+            <mat-radio-button value="4">Rs. 1002.00 to Rs. 3000.00</mat-radio-button>
+            <mat-radio-button value="5">Rs. 3001.00 to Rs. 4000.00</mat-radio-button>
+            <mat-radio-button value="6">Rs. 4000 upwards</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="row" style="margin-top: 1rem;">
+          <div class="col-md-6" style="padding-left: 0; padding-right: 2px;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Min</mat-label>
+              <input matInput placeholder="Rs.0.00">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6" style="padding-right: 0; padding-left: 2px;">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Max</mat-label>
+              <input matInput placeholder="Rs. 0.00">
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="row" style="margin-bottom: 0.5rem">
+          <button mat-flat-button color="primary" style="width: 100%;">Apply Filters</button>
+        </div>
+
+        <div class="row">
+          <button mat-stroked-button style="width: 100%;">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10" style="margin-top: 1.5rem">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="item-wrapper">
+            <div class="item-image">
+              <img src="../../../../../assets/item1.jpg" width="150px">
+            </div>
+            <div class="item-description">
+              <p class="item-name">Used Vacuum Cleaner</p>
+              <p class="item-subtitle">In working condition</p>
+              <p class="item-price">Rs. 2500.00</p>
+              <button mat-flat-button color="primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="item-wrapper">
+            <div class="item-image">
+              <img src="../../../../../assets/item3.jpg" style="top: 10px;" width="150px">
+            </div>
+            <div class="item-description">
+              <p class="item-name">Recycled Shipping Boxes</p>
+              <p class="item-subtitle">100pc</p>
+              <p class="item-price">Rs. 5000.00</p>
+              <button mat-flat-button color="primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="item-wrapper">
+            <div class="item-image">
+              <img src="../../../../../assets/item2.jpg" style="top: -25%" width="150px">
+            </div>
+            <div class="item-description">
+              <p class="item-name">Recycled Water Bottle</p>
+              <p class="item-subtitle">Recycled glass water bottle</p>
+              <p class="item-price">Rs. 1290.00</p>
+              <button mat-flat-button color="primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
