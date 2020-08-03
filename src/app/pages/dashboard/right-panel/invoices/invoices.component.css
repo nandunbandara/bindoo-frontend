@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+}
+
+h3 {
+    color: #673AB6;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 20px 0 0;
+    font-size: 20px;
+}
+
+header {
+    margin-bottom: 15px;
+}

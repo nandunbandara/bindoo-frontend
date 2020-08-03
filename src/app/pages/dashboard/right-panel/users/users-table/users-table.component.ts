@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 const ELEMENT_DATA = [
-  { name: 'Albert Einstein', email: 'albert@gmail.com', userType: 'Admin', status: 'Active' }
+  { name: 'Albert Einstein', email: 'albert@cmc.lk', userType: 'Admin', status: 'Active' },
+  { name: 'Adam Lewis', email: 'adam.lewis@cmc.lk', userType: 'User', status: 'Active' }
 ];
 
 @Component({

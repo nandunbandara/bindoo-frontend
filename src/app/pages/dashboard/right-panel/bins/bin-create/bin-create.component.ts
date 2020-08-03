@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BinCreateComponent implements OnInit {
 
+  locations = [
+    {
+      id: 1,
+      name: 'Home Sweet Home',
+      address: '123, BumbleBee Street, Colombo 2'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {

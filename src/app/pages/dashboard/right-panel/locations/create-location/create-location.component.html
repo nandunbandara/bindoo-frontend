@@ -12,22 +12,47 @@
       <div class="col-md-12">
         <p class="form-title">Location details</p>
       </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" name="name" ngModel required>
         </mat-form-field>
       </div>
-      <div class="col-md-3">
+
+    <div class="col-md-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Tax ID</mat-label>
+        <input matInput placeholder="Name" name="name" ngModel required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="outline">
+        <mat-label>Municipal Council</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let c of councils" [value]="c.id">
+            {{c.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
           <input matInput placeholder="Address" name="address" ngModel required>
         </mat-form-field>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12">
-        <button mat-raised-button color="primary" type="submit">Save user</button>
+        <button mat-raised-button color="primary" type="submit">Create Location</button>
       </div>
     </div>
   </form>
