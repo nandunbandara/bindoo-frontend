@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {NgApexchartsModule} from 'ng-apexcharts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -34,6 +35,10 @@ import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/
 import { CreateLocationComponent } from './pages/dashboard/right-panel/locations/create-location/create-location.component';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { InvoicesComponent } from './pages/dashboard/right-panel/invoices/invoices.component';
+import { AnalyticsComponent } from './pages/dashboard/right-panel/analytics/analytics.component';
+import { OrganizationsComponent } from './pages/dashboard/right-panel/organizations/organizations.component';
+import { OrganizationsViewComponent } from './pages/dashboard/right-panel/organizations/organizations-view/organizations-view.component';
+import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organizations/create-organization/create-organization.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,11 @@ import { InvoicesComponent } from './pages/dashboard/right-panel/invoices/invoic
     BinCreateComponent,
     LocationsViewComponent,
     CreateLocationComponent,
-    InvoicesComponent
+    InvoicesComponent,
+    AnalyticsComponent,
+    OrganizationsComponent,
+    OrganizationsViewComponent,
+    CreateOrganizationComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,7 @@ import { InvoicesComponent } from './pages/dashboard/right-panel/invoices/invoic
     MatTableModule,
     MatBadgeModule,
     HttpClientModule,
+    NgApexchartsModule,
   ],
   providers: [
     AngularFireAuth,

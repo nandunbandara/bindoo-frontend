@@ -21,6 +21,10 @@ import { BinCreateComponent } from './pages/dashboard/right-panel/bins/bin-creat
 import { LocationsViewComponent } from './pages/dashboard/right-panel/locations/locations-view/locations-view.component';
 import { CreateLocationComponent } from './pages/dashboard/right-panel/locations/create-location/create-location.component';
 import { InvoicesComponent } from './pages/dashboard/right-panel/invoices/invoices.component';
+import { AnalyticsComponent } from './pages/dashboard/right-panel/analytics/analytics.component';
+import { OrganizationsComponent } from './pages/dashboard/right-panel/organizations/organizations.component';
+import { OrganizationsViewComponent } from './pages/dashboard/right-panel/organizations/organizations-view/organizations-view.component';
+import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organizations/create-organization/create-organization.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -44,7 +48,20 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
       {
-        path: '', redirectTo: 'locations', pathMatch: 'full'
+        path: '', redirectTo: 'analytics', pathMatch: 'full'
+      },
+      {
+        path: 'analytics', component: AnalyticsComponent, 
+      },
+      {
+        path: 'organizations', component: OrganizationsComponent, children: [
+          {
+            path: '', component: OrganizationsViewComponent
+          },
+          {
+            path: 'add', component: CreateOrganizationComponent
+          }
+        ]
       },
       {
         path: 'locations', component: LocationsComponent, children: [
