@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationsViewComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'description', 'status', 'actions'];
+
   constructor() { }
 
   ngOnInit() {
