@@ -23,4 +23,11 @@ export class LocationService {
     return this.http.get(`${environment.apihost}/councils/${councilId}`);
   }
 
+  createLocation(name: string, description: string, type: number, building_number: string,
+                 line_1: string, line_2: string, city: string, uid: string, councilId: string) {
+    return this.http.post(`${environment.apihost}/locations`, {
+      name, description, type, building_number, line_1, line_2, city, uid, councilId
+    });
+  }
+
 }
