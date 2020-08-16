@@ -2,8 +2,8 @@
   <div class="wrapper-profile">
     <img src="/assets/icons/icon-user-avatar.svg" alt="Profile picture avata" class="profile-avatar">
     <div class="wrapper-text">
-      <h5 class="name">Elvis Presly</h5>
-      <p class="user-type">Admin User</p>
+      <h5 class="name" *ngIf="currentUser">{{currentUser.displayName}}</h5>
+      <p class="user-type" *ngIf="tokenResult">{{getUserType(tokenResult.claims.userType)}}</p>
     </div>
   </div>
 
@@ -16,17 +16,17 @@
     </div>
   </div> -->
 
-  <div class="wrapper-menu">
+  <div class="wrapper-menu" *ngIf="tokenResult">
     <ul>
 
-      <a routerLink="analytics">
+      <a routerLink="analytics" *ngIf="tokenResult.claims.userType !== 4">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-dashboard.svg" alt="Location icon">
           <p>Analytics</p>
         </li>
       </a>
 
-      <a routerLink="organizations">
+      <a routerLink="organizations" *ngIf="tokenResult.claims.userType === 3">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-company.svg" alt="Location icon">
           <p>Organizations</p>
@@ -40,7 +40,7 @@
         </li>
       </a>
 
-      <a routerLink="bins">
+      <a routerLink="bins" *ngIf="tokenResult.claims.userType !== 4">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-bin.svg" alt="Bin icon">
           <p>Bins</p>
@@ -61,7 +61,7 @@
         </li>
       </a>
 
-      <a routerLink="vehicles">
+      <a routerLink="vehicles" *ngIf="tokenResult.claims.userType !== 4 && tokenResult.claims.userType !== 1">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-vehicle.svg" alt="Vehicle icon">
           <p>Vehicles</p>
@@ -75,12 +75,12 @@
         </li>
       </a>
 
-      <a routerLink="users">
+      <!-- <a routerLink="users">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-user.svg" alt="User icon">
           <p>Users</p>
         </li>
-      </a>
+      </a> -->
 
       <a (click)="logout()">
         <li>

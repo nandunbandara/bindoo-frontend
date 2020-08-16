@@ -29,16 +29,16 @@
       </ng-container>
     
       <!-- Name Column -->
-      <ng-container matColumnDef="description">
+      <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Description</th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
       </ng-container>
     
       <!-- Weight Column -->
-      <ng-container matColumnDef="status">
+      <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef>Status</th>
         <td mat-cell *matCellDef="let element">
-          <span class="badge" [class.badge-success]="element.verified" [class.badge-danger]="!element.verified">{{element.active ? 'Active' : 'Inactive'}}</span>
+          {{element.description}}
         </td>
       </ng-container>
     
@@ -46,9 +46,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-flat-button color="primary">Activate</button>
-          <button mat-stroked-button color="primary">View</button>
-          <button mat-stroked-button color="warn">Remove</button>
+          <!-- <button mat-stroked-button color="primary">View</button> -->
+          <button mat-stroked-button color="warn" (click)="removeOrganization(element.uid)">Remove</button>
         </td>
       </ng-container>
     

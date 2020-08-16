@@ -22,30 +22,66 @@
         </mat-form-field>
       </div>
 
-    <div class="col-md-3">
+    <div class="col-md-9">
       <mat-form-field appearance="outline">
-        <mat-label>Tax ID</mat-label>
-        <input matInput placeholder="Name" name="name" ngModel required>
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Description" name="description" ngModel>
+        <mat-hint>You might need this to identify your location</mat-hint>
       </mat-form-field>
     </div>
 
-    <div class="col-md-6">
-      <mat-form-field appearance="outline">
-        <mat-label>Municipal Council</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let c of councils" [value]="c.id">
-            {{c.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-9">
         <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Address" name="address" ngModel required>
+          <mat-label>Municipal Council</mat-label>
+          <mat-select name="councilUid" ngModel>
+            <mat-option *ngFor="let c of Councils" [value]="c.uid">
+              {{c.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Tax ID</mat-label>
+          <input matInput placeholder="Tax ID" name="tax_id" ngModel required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Building Number</mat-label>
+          <input matInput placeholder="Building Number" name="building_number" ngModel>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-10">
+        <mat-form-field appearance="outline">
+          <mat-label>Line 1</mat-label>
+          <input matInput placeholder="Line 1 (Lane)" name="line_1" ngModel required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <mat-form-field appearance="outline">
+          <mat-label>Line 2</mat-label>
+          <input matInput placeholder="Line 2" name="line_2" ngModel>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>City/Suburb</mat-label>
+          <input matInput placeholder="City" name="city" ngModel required>
         </mat-form-field>
       </div>
     </div>

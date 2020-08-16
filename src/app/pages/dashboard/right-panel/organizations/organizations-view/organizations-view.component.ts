@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationsService } from 'src/app/services/organizations.service';
+import { APIResponse } from 'src/app/helpers/api-response';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-organizations-view',
@@ -7,11 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationsViewComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'status', 'actions'];
+  displayedColumns: string[] = ['name', 'email', 'description', 'actions'];
 
-  constructor() { }
+  organizations: MatTableDataSource<any>;
+
+  constructor(
+    private organizationService: OrganizationsService
+  ) { }
 
   ngOnInit() {
+    this.getAllOrganizations();
+  }
+
+  private getAllOrganizations() {
+    this.organizationService.getOrganizations().subscribe((response: APIResponse) => {
+      this.organizations = new MatTableDataSource<any>(response.data);
+    })
+  }
+
+  public removeOrganization(id: string) {
+    this.organizationService.deleteOrganization(id).subscribe((response: APIResponse) => {
+      if (response.success) {
+        this.getAllOrganizations();
+      }
+    });
   }
 
 }

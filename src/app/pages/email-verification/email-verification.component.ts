@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { APIResponse } from 'src/app/helpers/api-response';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-email-verification',
@@ -18,7 +19,8 @@ export class EmailVerificationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class EmailVerificationComponent implements OnInit {
             if(response.success) {
               this.router.navigate(['paymentinformation']);
             }
-          })
+          });
       } else {
         this.isValidating = false;
       }
@@ -39,6 +41,14 @@ export class EmailVerificationComponent implements OnInit {
 
   public get Validating(): boolean {
     return this.isValidating;
+  }
+
+  public resendEmail() {
+    this.authService.getCurrentUser().subscribe((user: firebase.User) => {
+      this.authService.sendVerificationEmail(user.uid).subscribe((emailResponse: APIResponse) => {
+        this.snackBar.open('Email verification sent!', null, { duration: 2000 });
+      });
+    });
   }
 
 }

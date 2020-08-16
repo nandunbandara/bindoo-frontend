@@ -1,105 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-class Councils {
-  private static councils = [
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 2,
-        name: 'Dehiwala - Mt. Lavinia',
-      },
-      {
-        id: 3,
-        name: 'Sri Jayawardane Pura',
-      },
-      {
-        id: 4,
-        name: 'Moratuwa',
-      },
-      {
-        id: 5,
-        name: 'Kaduwela',
-      },
-      {
-        id: 6,
-        name: 'Negombo',
-      },
-      {
-        id: 7,
-        name: 'Gampaha',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-      {
-        id: 1,
-        name: 'Colombo',
-      },
-    ];
-
-  public static get MunicipalCouncils(): {id: number, name: string}[] {
-      return this.councils;
-  }
-}
+import { CouncilsService } from 'src/app/services/councils.service';
+import { APIResponse } from 'src/app/helpers/api-response';
 
 @Component({
   selector: 'app-create-location',
@@ -108,11 +9,20 @@ class Councils {
 })
 export class CreateLocationComponent implements OnInit {
 
-  public councils = Councils.MunicipalCouncils;
 
-  constructor() { }
+  private councils;
+  constructor(
+    private councilService: CouncilsService,
+  ) { }
 
   ngOnInit() {
+    this.councilService.getCouncils().subscribe((response: APIResponse) => {
+      this.councils = response.data;
+    });
+  }
+
+  public get Councils() {
+    return this.councils;
   }
 
 }

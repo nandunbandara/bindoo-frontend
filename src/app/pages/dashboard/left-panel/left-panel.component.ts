@@ -10,6 +10,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LeftPanelComponent implements OnInit {
 
+  currentUser;
+  tokenResult;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -17,6 +20,16 @@ export class LeftPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.getCurrentUser().subscribe(response => {
+      console.log(response);
+      this.currentUser = response;
+    });
+
+    this.authService.getIdTokenResult().then(result => this.tokenResult = result);
+  }
+
+  public getUserType(type) {
+    return this.authService.getUserTypeMapping(type);
   }
 
   public logout() {

@@ -39,6 +39,9 @@ import { AnalyticsComponent } from './pages/dashboard/right-panel/analytics/anal
 import { OrganizationsComponent } from './pages/dashboard/right-panel/organizations/organizations.component';
 import { OrganizationsViewComponent } from './pages/dashboard/right-panel/organizations/organizations-view/organizations-view.component';
 import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organizations/create-organization/create-organization.component';
+import { StatisticsService } from './services/statistics.service';
+import { LocationService } from './services/location.service';
+import { CouncilsService } from './services/councils.service';
 
 @NgModule({
   declarations: [
@@ -86,6 +89,9 @@ import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organ
   providers: [
     AngularFireAuth,
     AuthService,
+    StatisticsService,
+    LocationService,
+    CouncilsService
   ],
   bootstrap: [AppComponent]
 })

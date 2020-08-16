@@ -7,6 +7,8 @@ import {
   ApexXAxis,
   ApexTitleSubtitle
 } from 'ng-apexcharts';
+import { StatisticsService } from 'src/app/services/statistics.service';
+import { APIResponse } from 'src/app/helpers/api-response';
 
 export interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -23,10 +25,17 @@ export interface ChartOptions {
 })
 export class AnalyticsComponent implements OnInit {
 
+  public orgCount = 0;
+  public locationsCount = 0;
+  public pvLocationsCount = 0;
+  public vehicleCount = 0;
+
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<any>;
 
-  constructor() { 
+  constructor(
+    private statisticsService: StatisticsService,
+  ) { 
     this.chartOptions = {
       series: [
         {
@@ -56,6 +65,34 @@ export class AnalyticsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getOrganizationCount();
+    this.getLocationsCount();
+    this.getPVLocationsCount();
+    this.getVehicleCount();
+  }
+
+  private getOrganizationCount() {
+    this.statisticsService.getOrganizationCount().subscribe((response: APIResponse) => {
+      this.orgCount = response.data;
+    });
+  }
+
+  private getLocationsCount() {
+    this.statisticsService.getLocations().subscribe((response: APIResponse) => {
+      this.locationsCount = response.data;
+    });
+  }
+
+  private getPVLocationsCount() {
+    this.statisticsService.getPVLocationCount().subscribe((response: APIResponse) => {
+      this.pvLocationsCount = response.data;
+    });
+  }
+
+  private getVehicleCount() {
+    this.statisticsService.getVehicleCount().subscribe((response: APIResponse) => {
+      this.vehicleCount = response.data;
+    })
   }
 
 }

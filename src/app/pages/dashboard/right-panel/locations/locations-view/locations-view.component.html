@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <h3>Locations</h3><br>
       <small style="position: relative; top: -5px; margin-bottom: 1.5rem;">Find all locations created by you here</small><br>
-      <button mat-raised-button color="primary" routerLink="add">+ Add location</button>
+      <button mat-raised-button color="primary" routerLink="add" *ngIf="idTokenResult && idTokenResult.claims.userType === 1">+ Add location</button>
     </div>
     <div class="col-md-4">
       <mat-form-field appearance="outline" style="width: 100%;">
