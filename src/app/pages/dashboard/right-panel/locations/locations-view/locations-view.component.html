@@ -31,7 +31,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef>Address</th>
-        <td mat-cell *matCellDef="let element"> {{ element.address }} </td>
+        <td mat-cell *matCellDef="let element"> {{ element.building_number }}, {{element.line_1}}, {{element.line_2}}, {{element.city}} </td>
       </ng-container>
     
       <!-- Weight Column -->

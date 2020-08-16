@@ -18,25 +18,25 @@
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" name="name" ngModel required>
+          <input matInput placeholder="Name" name="name" [(ngModel)]="name" required>
         </mat-form-field>
       </div>
 
     <div class="col-md-9">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <input matInput placeholder="Description" name="description" ngModel>
+        <input matInput placeholder="Description" name="description" [(ngModel)]="description">
         <mat-hint>You might need this to identify your location</mat-hint>
       </mat-form-field>
     </div>
 
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 1.5rem;">
       <div class="col-md-9">
         <mat-form-field appearance="outline">
           <mat-label>Municipal Council</mat-label>
-          <mat-select name="councilUid" ngModel>
+          <mat-select name="councilUid" [(ngModel)]="councilUid" required>
             <mat-option *ngFor="let c of Councils" [value]="c.uid">
               {{c.name}}
             </mat-option>
@@ -47,7 +47,8 @@
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Tax ID</mat-label>
-          <input matInput placeholder="Tax ID" name="tax_id" ngModel required>
+          <input matInput placeholder="Tax ID" name="tax_id" [(ngModel)]="tax_id" required>
+          <mat-hint>Please enter only the Tax ID provided by the municipal council.</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -58,14 +59,15 @@
       <div class="col-md-2">
         <mat-form-field appearance="outline">
           <mat-label>Building Number</mat-label>
-          <input matInput placeholder="Building Number" name="building_number" ngModel>
+          <input matInput placeholder="Building Number" name="building_number" [(ngModel)]="building_number">
         </mat-form-field>
       </div>
 
       <div class="col-md-10">
         <mat-form-field appearance="outline">
           <mat-label>Line 1</mat-label>
-          <input matInput placeholder="Line 1 (Lane)" name="line_1" ngModel required>
+          <input matInput placeholder="Line 1 (Lane)" name="line_1" [(ngModel)]="line_1" required>
+          <mat-hint>This value will be used to assign garbage collectors to you.</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -74,21 +76,21 @@
       <div class="col-md-8">
         <mat-form-field appearance="outline">
           <mat-label>Line 2</mat-label>
-          <input matInput placeholder="Line 2" name="line_2" ngModel>
+          <input matInput placeholder="Line 2" name="line_2" [(ngModel)]="line_2">
         </mat-form-field>
       </div>
 
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>City/Suburb</mat-label>
-          <input matInput placeholder="City" name="city" ngModel required>
+          <input matInput placeholder="City" name="city" [(ngModel)]="city" required>
         </mat-form-field>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <button mat-raised-button color="primary" type="submit">Create Location</button>
+        <button mat-raised-button color="primary" type="submit" (click)="save()">Create Location</button>
       </div>
     </div>
   </form>
