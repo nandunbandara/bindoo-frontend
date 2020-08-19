@@ -9,7 +9,9 @@
       </small>
     </div>
   </div>
-  <div class="row">
+
+  <!-- Admin -->
+  <div class="row" *ngIf="idTokenResult && idTokenResult.claims.userType === 3">
     <div class="col-md-3">
       <div class="stat-card">
         <div class="row">
@@ -64,6 +66,70 @@
           <div class="col-md-8 separator" style="text-align: left;">
             <p class="count-label">Vehicles</p>
             <p class="count-hint">Ready to pickup trash</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!-- Citizen -->
+  <div class="row" *ngIf="idTokenResult && idTokenResult.claims.userType === 1">
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{locationsByUserCount}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Locations</p>
+            <p class="count-hint">Registered locations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{binsByUserCount}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Bins</p>
+            <p class="count-hint">Number of Bins in locations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{pvLocationsCount}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Ready For Pickup</p>
+            <p class="count-hint">Bins to be cleared</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{vehicleCount}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Recycled Items</p>
+            <p class="count-hint">Recyclable items de-cluttered</p>
           </div>
         </div>
       </div>

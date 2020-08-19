@@ -9,6 +9,8 @@ import {
 } from 'ng-apexcharts';
 import { StatisticsService } from 'src/app/services/statistics.service';
 import { APIResponse } from 'src/app/helpers/api-response';
+import { AuthService } from 'src/app/services/auth.service';
+import { idTokenResult } from '@angular/fire/auth-guard';
 
 export interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -30,12 +32,20 @@ export class AnalyticsComponent implements OnInit {
   public pvLocationsCount = 0;
   public vehicleCount = 0;
 
+  public locationsByUserCount = 0;
+  public binsByUserCount = 0;
+
+  public idTokenResult;
+
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<any>;
 
   constructor(
     private statisticsService: StatisticsService,
+    private authService: AuthService
   ) { 
+
+    this.authService.getIdTokenResult().then(token => this.idTokenResult = token);
     this.chartOptions = {
       series: [
         {
@@ -69,6 +79,8 @@ export class AnalyticsComponent implements OnInit {
     this.getLocationsCount();
     this.getPVLocationsCount();
     this.getVehicleCount();
+    this.getLocationCountByUser();
+    this.getBinCountByUser();
   }
 
   private getOrganizationCount() {
@@ -92,7 +104,19 @@ export class AnalyticsComponent implements OnInit {
   private getVehicleCount() {
     this.statisticsService.getVehicleCount().subscribe((response: APIResponse) => {
       this.vehicleCount = response.data;
-    })
+    });
+  }
+
+  private getLocationCountByUser() {
+    this.statisticsService.getLocationsCountByUser(this.idTokenResult.claims.user_id).subscribe((response: APIResponse) => {
+      this.locationsByUserCount = response.data;
+    });
+  }
+
+  private getBinCountByUser() {
+    this.statisticsService.getBinCountByUser(this.idTokenResult.claims.user_id).subscribe((response: APIResponse) => {
+      this.binsByUserCount = response.data;
+    });
   }
 
 }

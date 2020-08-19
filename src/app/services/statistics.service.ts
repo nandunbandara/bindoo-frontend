@@ -19,6 +19,10 @@ export class StatisticsService {
     return this.http.get(`${environment.apihost}/locations/count`);
   }
 
+  getLocationsCountByUser(uid: string) {
+    return this.http.get(`${environment.apihost}/users/${uid}/locations/count`);
+  }
+
   getLocationsByCouncil(councilId: string) {
     return this.http.get(`${environment.apihost}/councils/${councilId}/count`);
   }
@@ -29,5 +33,9 @@ export class StatisticsService {
 
   getVehicleCount() {
     return this.http.get(`${environment.apihost}/vehicles/count`);
+  }
+
+  getBinCountByUser(uid: string) {
+    return this.http.get(`${environment.apihost}/users/${uid}/bins/count`);
   }
 }

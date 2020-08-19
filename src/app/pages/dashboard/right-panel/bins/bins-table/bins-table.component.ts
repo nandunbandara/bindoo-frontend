@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { BinsService } from 'src/app/services/bins.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { APIResponse } from 'src/app/helpers/api-response';
 
 const ELEMENT_DATA = [
   { name: 'Bin A', description: 'Recyclable Material', location: 'Home Sweet Home', capacity: '20l' },
@@ -16,12 +20,27 @@ const ELEMENT_DATA = [
 })
 export class BinsTableComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  bins: MatTableDataSource<any>;
+  user;
 
   displayedColumns: string[] = ['name', 'description', 'location', 'capacity', 'action'];
-  dataSource = ELEMENT_DATA;
+
+  constructor(
+    private binService: BinsService,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit() {
+    this.getBinsByUser();
+  }
+
+  private getBinsByUser() {
+    this.authService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      this.binService.getAllBinsByUser(this.user.uid).subscribe((response: APIResponse) => {
+        this.bins = new MatTableDataSource<any>(response.data);
+      });
+    });
+  }
 
 }
