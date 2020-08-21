@@ -14,4 +14,8 @@ export class BinsService {
   public getAllBinsByUser(uid: string) {
     return this.http.get(`${environment.apihost}/users/${uid}/bins`);
   }
+
+  public createNewBin(locationId: string, name: string, description: string, capacity: number, type = 1) {
+    return this.http.post(`${environment.apihost}/locations/${locationId}/bins`, { name, description, capacity, type });
+  }
 }

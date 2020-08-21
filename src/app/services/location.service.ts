@@ -19,6 +19,10 @@ export class LocationService {
     return this.http.get(`${environment.apihost}/users/${uid}/locations`);
   }
 
+  getLocationsByUserAndStatus(uid: string, verified: boolean) {
+    return this.http.get(`${environment.apihost}/users/${uid}/locations/verified/${verified}`);
+  }
+
   getLocationsByCouncil(councilId: string) {
     return this.http.get(`${environment.apihost}/councils/${councilId}`);
   }
