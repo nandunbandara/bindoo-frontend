@@ -43,4 +43,10 @@ export class BinsTableComponent implements OnInit {
     });
   }
 
+  public markReadyToPickup(id: string) {
+    this.binService.markAsReadyForPickup(id).subscribe((response: APIResponse) => {
+      this.getBinsByUser();
+    })
+  }
+
 }

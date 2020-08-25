@@ -39,9 +39,9 @@ const routes: Routes = [
       { path: '', component: LoginComponent, data: { animation: 'Login' } },
       { path: 'signup', component: SignupComponent, data: { animation: 'SignUp' } },
       { path: 'emailverification', component: EmailVerificationComponent, data: { animation: 'EmailVerification' } },
-      { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation' } },
     ]
   },
+  { path: 'paymentinformation', component: PaymentInformationComponent, data: { animation: 'PaymentInformation' } },
   {
     path: 'dashboard', component: DashboardComponent,
     canActivate: [AngularFireAuthGuard],

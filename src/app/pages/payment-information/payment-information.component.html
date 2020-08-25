@@ -1,112 +1,61 @@
-<div style="margin-top: 5vh;">
-  <p>
-    <!-- <img src="../../../assets/garbage.svg" width="50px" alt=""> -->
-  </p>
-  <p class="bindoo-subtitle">We are almost there!</p>
-  <h1 class="bindoo-heading" style="font-size: 48px; "><span style="color: #673ab7;">bin</span><span
-      style="color: #444;">doo</span></h1>
-  <small style="color: #aaa; font-size: 14px;">Step 3 / 3</small>
-  <p style="font-weight: 500;">Payment Information</p>
+<div class="container-fluid">
+  <div class="row" style="height: 100vh;">
+    <div class="col-md-4 offset-md-1">
+      <div>
+        <div style="margin-top: 5vh;">
+          <p>
+            <!-- <img src="../../../assets/garbage.svg" width="50px" alt=""> -->
+          </p>
+          <p class="bindoo-subtitle">We are almost there!</p>
+          <h1 class="bindoo-heading" style="font-size: 48px; "><span style="color: #673ab7;">bin</span><span
+              style="color: #444;">doo</span></h1>
+          <small style="color: #aaa; font-size: 14px;">Step 3 / 3</small>
+          <p style="font-weight: 500;">Payment Information</p>
+        
+          <div class="card" style="margin-top: 20px;">
+            <div class="card__front card__part">
+              <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+              <img class="card__front-logo card__logo"
+                [src]="cardTypeImgUrl">
+              <p class="card_numer">XXXX XXXX XXXX XXXX</p>
+              <div class="card__space-75">
+                <span class="card__label">Card holder</span>
+                <p class="card__info">CARD HOLDERS NAME</p>
+              </div>
+              <div class="card__space-25">
+                <span class="card__label">Expires</span>
+                <p class="card__info">MM/YY</p>
+              </div>
+            </div>
+          
+            <div class="card__back card__part">
+              <div class="card__black-line"></div>
+              <div class="card__back-content">
+                <div class="card__secret">
+                  <p class="card__secret--last">XXX</p>
+                </div>
+                <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <img class="card__back-logo card__logo"
+                  [src]="cardTypeImgUrl">
+          
+              </div>
+            </div>
+          
+          </div>
 
-  <div class="card" style="margin-top: 20px;">
-    <div class="card__front card__part">
-      <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
-      <img class="card__front-logo card__logo"
-        [src]="cardTypeImgUrl">
-      <p class="card_numer">{{cardNumber}}</p>
-      <div class="card__space-75">
-        <span class="card__label">Card holder</span>
-        <p class="card__info">{{cardHoldersName}}</p>
-      </div>
-      <div class="card__space-25">
-        <span class="card__label">Expires</span>
-        <p class="card__info">{{expiry}}</p>
-      </div>
-    </div>
-  
-    <div class="card__back card__part">
-      <div class="card__black-line"></div>
-      <div class="card__back-content">
-        <div class="card__secret">
-          <p class="card__secret--last">{{cvc}}</p>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="card-info" #cardInfo></div> 
+              <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+            </div>
+          </div>
+        
+        
         </div>
-        <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
-        <img class="card__back-logo card__logo"
-          [src]="cardTypeImgUrl">
-  
       </div>
     </div>
-  
+    <div class="col-md-6 offset-md-1">
+      <div class="hidden-xs" class="image-container"></div>
+    </div>
   </div>
-
-  <form name="paymentInfo">
-
-
-    <p>
-      <mat-form-field appearance="outline" class="bindoo-full-width">
-        <mat-label>Card Number</mat-label>
-        <input matInput placeholder="XXXX XXXX XXXX XXXX" [(ngModel)]="cardNumber" name="cardNumber" (keyup)="onUpdateCardNumber()">
-        <!-- <mat-icon matSuffix >
-          sentiment_very_satisfied
-        </mat-icon>
-        <mat-icon matSuffix >
-          sentiment_very_dissatisfied
-        </mat-icon> -->
-        
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field appearance="outline" class="bindoo-full-width">
-        <mat-label>Card Holder Name</mat-label>
-        <input matInput placeholder="Ken Miles" name="cardHoldersName" [(ngModel)]="cardHoldersName">
-        <!-- <mat-icon matSuffix >
-              sentiment_very_satisfied
-            </mat-icon>
-            <mat-icon matSuffix >
-              sentiment_very_dissatisfied
-            </mat-icon> -->
-    
-      </mat-form-field>
-    </p>
-    
-
-    <div class="row">
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="bindoo-full-width">
-          <mat-label>Expiry</mat-label>
-          <input matInput placeholder="MM/YY" name="expiry" [(ngModel)]="expiry">
-          <!-- <mat-icon matSuffix >
-                          sentiment_very_satisfied
-                        </mat-icon>
-                        <mat-icon matSuffix >
-                          sentiment_very_dissatisfied
-                        </mat-icon> -->
-        
-        </mat-form-field>
-      </div>
-      <div class="col-md-6">
-        <mat-form-field appearance="outline" class="bindoo-full-width">
-          <mat-label>CVC</mat-label>
-          <input matInput placeholder="xxx" name="cvc" [(ngModel)]="cvc">
-          <!-- <mat-icon matSuffix >
-                                sentiment_very_satisfied
-                              </mat-icon>
-                              <mat-icon matSuffix >
-                                sentiment_very_dissatisfied
-                              </mat-icon> -->
-      
-        </mat-form-field>
-      </div>
-    </div>
-    
-    
-    <p>
-      <button mat-raised-button class="bindoo-full-width"
-        color="primary" style="height: 50px;">Submit</button>
-    </p>
-
-  </form>
-
 </div>
-

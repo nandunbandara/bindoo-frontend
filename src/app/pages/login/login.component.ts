@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
           } else {
             this.router.navigate(['emailverification']);
           }
-        } else if (result.claims.userType === 4) {
+        } else if (result.claims.userType === 4 || result.claims.userType === 3) {
           this.router.navigate(['dashboard']);
         }
       });

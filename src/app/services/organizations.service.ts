@@ -18,4 +18,8 @@ export class OrganizationsService {
   public deleteOrganization(id: string) {
     return this.http.delete(`${environment.apihost}/organizations/${id}`);
   }
+
+  public createOrganization(name: string, description: string, email: string, password: string) {
+    return this.http.post(`${environment.apihost}/organizations`, {name, description, email, password});
+  }
 }

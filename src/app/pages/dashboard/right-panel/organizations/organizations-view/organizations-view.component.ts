@@ -25,7 +25,7 @@ export class OrganizationsViewComponent implements OnInit {
   private getAllOrganizations() {
     this.organizationService.getOrganizations().subscribe((response: APIResponse) => {
       this.organizations = new MatTableDataSource<any>(response.data);
-    })
+    });
   }
 
   public removeOrganization(id: string) {

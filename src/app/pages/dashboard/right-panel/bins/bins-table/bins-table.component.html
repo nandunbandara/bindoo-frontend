@@ -48,7 +48,9 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Ready for pick up?</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-flat-button color="primary">Ready to Pickup</button>
+      <span class="badge badge-success" *ngIf="element.readyForCollection" style="margin-right: 1.5rem;">Ready For Pickup</span>
+      <button mat-stroked-button color="warn" (click)="markReadyToPickup(element.bin_id)" *ngIf="element.readyForCollection">Cancel</button>
+      <button mat-flat-button color="primary" (click)="markReadyToPickup(element.bin_id)" *ngIf="!element.readyForCollection">Ready to Pickup</button>
     </td>
   </ng-container>
 

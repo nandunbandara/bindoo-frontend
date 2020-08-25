@@ -18,4 +18,8 @@ export class BinsService {
   public createNewBin(locationId: string, name: string, description: string, capacity: number, type = 1) {
     return this.http.post(`${environment.apihost}/locations/${locationId}/bins`, { name, description, capacity, type });
   }
+
+  public markAsReadyForPickup(id: string) {
+    return this.http.put(`${environment.apihost}/bins/${id}/readyForCollection`, {});
+  }
 }
