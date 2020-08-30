@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PaymentService } from 'src/app/services/payment.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { APIResponse } from 'src/app/helpers/api-response';
+
+declare const Stripe;
 
 @Component({
   selector: 'app-payment-information',
@@ -22,10 +27,16 @@ export class PaymentInformationComponent implements OnInit, AfterViewInit {
   paymentToken: string;
   card: any;
 
-  constructor() { }
+  user;
+
+  constructor(
+    private paymentService: PaymentService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.cardTypeImgUrl = 'https://image.ibb.co/cZeFjx/little_square.png';
+    this.authService.getCurrentUser().subscribe(user => this.user = user);
   }
 
   ngAfterViewInit(): void {
@@ -42,8 +53,15 @@ export class PaymentInformationComponent implements OnInit, AfterViewInit {
     });
   }
   
-  async addCard() {
-    
+  async addPaymentMethod() {
+    this.paymentService.createCustomerWithoutToken(this.user.uid, this.user.email).subscribe((customerResponse: APIResponse) => {
+
+        this.paymentService.getSetupIntentClientSecret().subscribe(async (clientSecretResponse: APIResponse) => {
+          const result = await this.stripe.handleCardSetup(
+            
+          )
+        })
+    });
   }
 
 }

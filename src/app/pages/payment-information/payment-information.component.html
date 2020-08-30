@@ -45,8 +45,16 @@
 
           <div class="row">
             <div class="col-md-12">
-              <div id="card-info" #cardInfo></div> 
+              <div class="card-info-holder">
+                <div id="card-info" #cardInfo></div> 
+              </div>
               <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <button mat-flat-button color="primary" style="float: right;" (click)="addPaymentMethod()">Add Payment Method</button>
             </div>
           </div>
         
