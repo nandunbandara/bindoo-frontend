@@ -42,6 +42,7 @@ import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organ
 import { StatisticsService } from './services/statistics.service';
 import { LocationService } from './services/location.service';
 import { CouncilsService } from './services/councils.service';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { CouncilsService } from './services/councils.service';
     AnalyticsComponent,
     OrganizationsComponent,
     OrganizationsViewComponent,
-    CreateOrganizationComponent
+    CreateOrganizationComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

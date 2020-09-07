@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import * as firebase from 'firebase';
+import { UserService } from 'src/app/services/user.service';
+import { APIResponse } from 'src/app/helpers/api-response';
 export class LoginErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -70,6 +73,18 @@ export class LoginComponent implements OnInit {
           }
         } else if (result.claims.userType === 4 || result.claims.userType === 3) {
           this.router.navigate(['dashboard']);
+        } else if (result.claims.userType === 2) {
+
+          // check if customer had added a payment method
+          this.userService.getUserByUid(result.claims.user_id).subscribe((response: APIResponse) => {
+            console.log(response);
+            if (response.data.stripeToken) {
+              this.router.navigate(['dashboard']);
+            } else {
+              this.router.navigate(['paymentinformation']);
+            }
+          });
+
         }
       });
       this.isLoading = false;

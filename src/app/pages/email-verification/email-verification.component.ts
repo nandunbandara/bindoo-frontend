@@ -25,17 +25,22 @@ export class EmailVerificationComponent implements OnInit {
 
   ngOnInit() {
     this.isValidating = true;
-    this.authService.getCurrentUser().subscribe((user: firebase.User) => this.user = user);
-    this.route.queryParams.subscribe(params => {
-      if (params.token) {
-          this.authService.verifyEmail(this.user.uid, params.token).subscribe((response: APIResponse) => {
-            if(response.success) {
-              this.router.navigate(['paymentinformation']);
-            }
-          });
-      } else {
-        this.isValidating = false;
+    this.authService.getCurrentUser().subscribe((user: firebase.User) => {
+      if (!user) {
+        return this.router.navigate(['']);
       }
+      this.user = user;
+      this.route.queryParams.subscribe(params => {
+        if (params.token) {
+            this.authService.verifyEmail(this.user.uid, params.token).subscribe((response: APIResponse) => {
+              if(response.success) {
+                this.router.navigate(['paymentinformation']);
+              }
+            });
+        } else {
+          this.isValidating = false;
+        }
+      });
     });
   }
 
@@ -43,11 +48,21 @@ export class EmailVerificationComponent implements OnInit {
     return this.isValidating;
   }
 
+  public get User() {
+    return this.user;
+  }
+
   public resendEmail() {
     this.authService.getCurrentUser().subscribe((user: firebase.User) => {
       this.authService.sendVerificationEmail(user.uid).subscribe((emailResponse: APIResponse) => {
         this.snackBar.open('Email verification sent!', null, { duration: 2000 });
       });
+    });
+  }
+
+  public logout() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['']);
     });
   }
 

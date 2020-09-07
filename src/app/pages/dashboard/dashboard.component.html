@@ -1,5 +1,8 @@
-<app-left-panel></app-left-panel>
+<div *ngIf="!isLoading">
+  <app-left-panel></app-left-panel>
 
-<div class="right-panel">
-  <router-outlet></router-outlet>
+  <div class="right-panel">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+<app-loader *ngIf="isLoading"></app-loader>

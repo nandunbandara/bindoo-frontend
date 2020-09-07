@@ -45,7 +45,6 @@ export class AnalyticsComponent implements OnInit {
     private authService: AuthService
   ) { 
 
-    this.authService.getIdTokenResult().then(token => this.idTokenResult = token);
     this.chartOptions = {
       series: [
         {
@@ -75,12 +74,15 @@ export class AnalyticsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getOrganizationCount();
-    this.getLocationsCount();
-    this.getPVLocationsCount();
-    this.getVehicleCount();
-    this.getLocationCountByUser();
-    this.getBinCountByUser();
+    this.authService.getIdTokenResult().then(token => {
+      this.idTokenResult = token;
+      this.getOrganizationCount();
+      this.getLocationsCount();
+      this.getPVLocationsCount();
+      this.getVehicleCount();
+      this.getLocationCountByUser();
+      this.getBinCountByUser();
+    });
   }
 
   private getOrganizationCount() {
