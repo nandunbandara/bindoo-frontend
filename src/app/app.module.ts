@@ -43,6 +43,12 @@ import { StatisticsService } from './services/statistics.service';
 import { LocationService } from './services/location.service';
 import { CouncilsService } from './services/councils.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { CouncilsComponent } from './pages/dashboard/right-panel/councils/councils.component';
+import { CouncilsViewComponent } from './pages/dashboard/right-panel/councils/councils-view/councils-view.component';
+import { CreateCouncilComponent } from './pages/dashboard/right-panel/councils/create-council/create-council.component';
+import { RecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items.component';
+import { RecycleableItemsViewComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items-view/recycleable-items-view.component';
+import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/create-recycleable-items/create-recycleable-items.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +78,13 @@ import { LoaderComponent } from './components/loader/loader.component';
     OrganizationsComponent,
     OrganizationsViewComponent,
     CreateOrganizationComponent,
-    LoaderComponent
+    LoaderComponent,
+    CouncilsComponent,
+    CouncilsViewComponent,
+    CreateCouncilComponent,
+    RecycleableItemsComponent,
+    RecycleableItemsViewComponent,
+    CreateRecycleableItemsComponent
   ],
   imports: [
     BrowserModule,

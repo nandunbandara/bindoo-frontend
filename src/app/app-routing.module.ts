@@ -25,6 +25,9 @@ import { AnalyticsComponent } from './pages/dashboard/right-panel/analytics/anal
 import { OrganizationsComponent } from './pages/dashboard/right-panel/organizations/organizations.component';
 import { OrganizationsViewComponent } from './pages/dashboard/right-panel/organizations/organizations-view/organizations-view.component';
 import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organizations/create-organization/create-organization.component';
+import { CouncilsComponent } from './pages/dashboard/right-panel/councils/councils.component';
+import { CouncilsViewComponent } from './pages/dashboard/right-panel/councils/councils-view/councils-view.component';
+import { CreateCouncilComponent } from './pages/dashboard/right-panel/councils/create-council/create-council.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -61,6 +64,12 @@ const routes: Routes = [
           {
             path: 'add', component: CreateOrganizationComponent
           }
+        ]
+      },
+      {
+        path: 'councils', component: CouncilsComponent, children: [
+          { path: '', component: CouncilsViewComponent },
+          { path: 'add', component: CreateCouncilComponent }
         ]
       },
       {
