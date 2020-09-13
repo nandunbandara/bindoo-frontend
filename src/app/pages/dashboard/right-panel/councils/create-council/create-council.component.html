@@ -1,3 +1,61 @@
-<p>
-  create-council works!
-</p>
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Councils > Add Council</h3>
+    </div>
+  </div>
+</header>
+
+<mat-card>
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="form-title">Location details</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" name="name" [(ngModel)]="name" required>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Description" name="description" [(ngModel)]="description">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" name="email" [(ngModel)]="email" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
+          <mat-hint>This password should be used by the organization to login to the</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button mat-raised-button color="primary" type="submit" (click)="createCouncil()">Create Organization</button>
+      </div>
+    </div>
+  </form>
+</mat-card>
