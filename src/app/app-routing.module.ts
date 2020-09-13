@@ -28,6 +28,9 @@ import { CreateOrganizationComponent } from './pages/dashboard/right-panel/organ
 import { CouncilsComponent } from './pages/dashboard/right-panel/councils/councils.component';
 import { CouncilsViewComponent } from './pages/dashboard/right-panel/councils/councils-view/councils-view.component';
 import { CreateCouncilComponent } from './pages/dashboard/right-panel/councils/create-council/create-council.component';
+import { RecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items.component';
+import { RecycleableItemsViewComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items-view/recycleable-items-view.component';
+import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/create-recycleable-items/create-recycleable-items.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -82,6 +85,12 @@ const routes: Routes = [
         path: 'bins', component: BinsComponent, children: [
           { path: '', component: BinsTableComponent },
           { path: 'add', component: BinCreateComponent },
+        ]
+      },
+      {
+        path: 'recyclable-items', component: RecycleableItemsComponent, children: [
+          { path: '', component: RecycleableItemsViewComponent },
+          { path: 'add', component: CreateRecycleableItemsComponent }
         ]
       },
       { path: 'store', component: StoreComponent },
