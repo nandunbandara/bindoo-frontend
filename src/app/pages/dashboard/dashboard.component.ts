@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { APIResponse } from 'src/app/helpers/api-response';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,15 @@ export class DashboardComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    private toast: ToastrService,
   ) { }
 
   ngOnInit() {
+    var pusher = new Pusher('a887b115c97b94bf99a6', {
+      cluster: 'ap2'
+    });
+
     this.authService.getCurrentUser().subscribe((user) => {
       if (!user) {
         return this.logout();
@@ -36,7 +42,16 @@ export class DashboardComponent implements OnInit {
         }
   
         console.log('User in dashboard: ', user);
-  
+
+        const channel = pusher.subscribe(user.uid);
+        channel.bind('new-location', (data) => {
+          this.toast.info('New Location', 'An user submitted a new location for your reviewal!');
+        });
+
+        channel.bind('location-verified', (data) => {
+          this.toast.info('Location Verified', 'The council verified your location!');
+        });
+
         this.userService.getUserByUid(user.uid).subscribe((response: APIResponse) => {
           if (response.success && tokenResult.claims.userType === 1 && !response.data.stripeToken) {
             this.router.navigate(['paymentinformation']);

@@ -22,6 +22,8 @@ export class BinsTableComponent implements OnInit {
 
   bins: MatTableDataSource<any>;
   user;
+  councilUid: string;
+  userType: number;
 
   displayedColumns: string[] = ['name', 'description', 'location', 'capacity', 'action'];
 
@@ -32,6 +34,15 @@ export class BinsTableComponent implements OnInit {
 
   ngOnInit() {
     this.getBinsByUser();
+    this.authService.getIdTokenResult().then(tokenResult => {
+      this.userType = tokenResult.claims.userType;
+      this.councilUid = tokenResult.claims.councilId;
+      if (this.userType === 1) {
+        this.getBinsByUser();
+      } else if (this.userType === 2) {
+        this.getBinsByCouncilAndStatus();
+      };
+    });
   }
 
   private getBinsByUser() {
@@ -40,6 +51,12 @@ export class BinsTableComponent implements OnInit {
       this.binService.getAllBinsByUser(this.user.uid).subscribe((response: APIResponse) => {
         this.bins = new MatTableDataSource<any>(response.data);
       });
+    });
+  }
+
+  private getBinsByCouncilAndStatus() {
+    this.binService.getBinByCouncilAndStatus(this.councilUid, true).subscribe((response: APIResponse) => {
+      this.bins = new MatTableDataSource<any>(response.data);
     });
   }
 

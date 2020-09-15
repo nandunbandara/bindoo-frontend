@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+ 
 import {NgApexchartsModule} from 'ng-apexcharts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +49,8 @@ import { CreateCouncilComponent } from './pages/dashboard/right-panel/councils/c
 import { RecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items.component';
 import { RecycleableItemsViewComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items-view/recycleable-items-view.component';
 import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/create-recycleable-items/create-recycleable-items.component';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,7 @@ import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/r
     MatBadgeModule,
     HttpClientModule,
     NgApexchartsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     AngularFireAuth,

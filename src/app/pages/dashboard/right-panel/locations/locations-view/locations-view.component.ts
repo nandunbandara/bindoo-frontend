@@ -16,6 +16,8 @@ export class LocationsViewComponent implements OnInit {
 
   locations: MatTableDataSource<any>;
   idTokenResult;
+  userType;
+  councilId;
 
   constructor(
     private locationService: LocationService,
@@ -26,19 +28,31 @@ export class LocationsViewComponent implements OnInit {
     firebase.auth().currentUser.getIdTokenResult().then(idTokenResult => {
       console.log(idTokenResult);
       this.idTokenResult = idTokenResult;
-      if (idTokenResult.claims.userType === 1) {
-        this.locationService.getLocationsByUser(firebase.auth().currentUser.uid).subscribe((response: APIResponse) => {
-          this.locations = new MatTableDataSource<any>(response.data);
-        });
-      } else if (idTokenResult.claims.userType === 2) {
-        this.locationService.getLocationsByCouncil(idTokenResult.claims.councilId).subscribe((response: APIResponse) => {
-          this.locations = new MatTableDataSource<any>(response.data);
-        });
-      } else if (idTokenResult.claims.userType === 3) {
-        this.locationService.getAllLocations().subscribe((response: APIResponse) => {
-          this.locations = new MatTableDataSource<any>(response.data);
-        });
-      }
+      this.userType = idTokenResult.claims.userType;
+      this.councilId = idTokenResult.claims.councilId;
+      this.getLocations();
+    });
+  }
+
+  private getLocations() {
+    if (this.userType === 1) {
+      this.locationService.getLocationsByUser(firebase.auth().currentUser.uid).subscribe((response: APIResponse) => {
+        this.locations = new MatTableDataSource<any>(response.data);
+      });
+    } else if (this.userType === 2) {
+      this.locationService.getLocationsByCouncil(this.councilId).subscribe((response: APIResponse) => {
+        this.locations = new MatTableDataSource<any>(response.data);
+      });
+    } else if (this.userType === 3) {
+      this.locationService.getAllLocations().subscribe((response: APIResponse) => {
+        this.locations = new MatTableDataSource<any>(response.data);
+      });
+    }
+  }
+
+  public approve(id: string) {
+    this.locationService.approveLocation(id).subscribe((response: APIResponse) => {
+      this.getLocations();
     });
   }
 

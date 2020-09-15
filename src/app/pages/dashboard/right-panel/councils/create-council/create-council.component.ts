@@ -29,7 +29,7 @@ export class CreateCouncilComponent implements OnInit {
       email: this.email, password: this.password
     }).subscribe((response: APIResponse) => {
       this.router.navigate(['dashboard/councils']);
-    })
+    });
   }
 
 }

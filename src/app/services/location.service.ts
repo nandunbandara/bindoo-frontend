@@ -11,27 +11,31 @@ export class LocationService {
     private http: HttpClient
   ) { }
 
-  getAllLocations() {
+  public getAllLocations() {
     return this.http.get(`${environment.apihost}/locations`);
   }
 
-  getLocationsByUser(uid: string) {
+  public getLocationsByUser(uid: string) {
     return this.http.get(`${environment.apihost}/users/${uid}/locations`);
   }
 
-  getLocationsByUserAndStatus(uid: string, verified: boolean) {
+  public getLocationsByUserAndStatus(uid: string, verified: boolean) {
     return this.http.get(`${environment.apihost}/users/${uid}/locations/verified/${verified}`);
   }
 
-  getLocationsByCouncil(councilId: string) {
-    return this.http.get(`${environment.apihost}/councils/${councilId}`);
+  public getLocationsByCouncil(councilId: string) {
+    return this.http.get(`${environment.apihost}/councils/${councilId}/locations`);
   }
 
-  createLocation(name: string, description: string, type: number, building_number: string,
+  public createLocation(name: string, description: string, type: number, building_number: string,
                  line_1: string, line_2: string, city: string, uid: string, councilId: string) {
     return this.http.post(`${environment.apihost}/users/${uid}/locations`, {
       name, description, type, building_number, line_1, line_2, city, councilId
     });
+  }
+
+  public approveLocation(id: string) {
+    return this.http.put(`${environment.apihost}/locations/${id}/verified`, {});
   }
 
 }

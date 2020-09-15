@@ -67,23 +67,25 @@ export class LoginComponent implements OnInit {
         console.log('ID TOKEN RESULT: ', result);
         if (result.claims.userType === 1) {
           if (user.user.emailVerified) {
-            this.router.navigate(['dashboard']);
+
+            this.userService.getUserByUid(result.claims.user_id).subscribe((response: APIResponse) => {
+              console.log(response);
+              if (response.data.stripeToken) {
+                this.router.navigate(['dashboard']);
+              } else {
+                this.router.navigate(['paymentinformation']);
+              }
+            });
+
           } else {
             this.router.navigate(['emailverification']);
           }
+
         } else if (result.claims.userType === 4 || result.claims.userType === 3) {
           this.router.navigate(['dashboard']);
         } else if (result.claims.userType === 2) {
 
-          // check if customer had added a payment method
-          this.userService.getUserByUid(result.claims.user_id).subscribe((response: APIResponse) => {
-            console.log(response);
-            if (response.data.stripeToken) {
-              this.router.navigate(['dashboard']);
-            } else {
-              this.router.navigate(['paymentinformation']);
-            }
-          });
+          this.router.navigate(['dashboard']);
 
         }
       });

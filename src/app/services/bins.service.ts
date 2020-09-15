@@ -22,4 +22,8 @@ export class BinsService {
   public markAsReadyForPickup(id: string) {
     return this.http.put(`${environment.apihost}/bins/${id}/readyForCollection`, {});
   }
+
+  public getBinByCouncilAndStatus(councilUid: string, readyForPickup: boolean) {
+    return this.http.get(`${environment.apihost}/councils/${councilUid}/bins/readyForCollection/${readyForPickup}`);
+  }
 }
