@@ -5,7 +5,8 @@ import { MatSnackBar } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 import { APIResponse } from 'src/app/helpers/api-response';
 import { ToastrService } from 'ngx-toastr';
-
+import Pusher from 'pusher-js';
+import {take} from 'rxjs/operators';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -45,11 +46,17 @@ export class DashboardComponent implements OnInit {
 
         const channel = pusher.subscribe(user.uid);
         channel.bind('new-location', (data) => {
-          this.toast.info('New Location', 'An user submitted a new location for your reviewal!');
+          this.toast.info('An user submitted a new location for your reviewal.', 'New Location')
+            .onTap.pipe(take(1)).subscribe(() => this.router.navigate(['/dashboard/locations']));
         });
 
         channel.bind('location-verified', (data) => {
-          this.toast.info('Location Verified', 'The council verified your location!');
+          this.toast.info('The council verified your location.', 'Location Verified');
+        });
+
+        channel.bind('new_ready_for_pickup', data => {
+          this.toast.info('A bin was marked as ready for pickup by a user.', 'Ready for pickup')
+            .onTap.pipe(take(1)).subscribe(() =>  this.router.navigate(['dashboard/bins']));
         });
 
         this.userService.getUserByUid(user.uid).subscribe((response: APIResponse) => {
