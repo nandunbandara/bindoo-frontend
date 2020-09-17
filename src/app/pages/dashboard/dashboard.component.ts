@@ -59,6 +59,11 @@ export class DashboardComponent implements OnInit {
             .onTap.pipe(take(1)).subscribe(() =>  this.router.navigate(['dashboard/bins']));
         });
 
+        channel.bind('location_suspended', data => {
+          this.toast.info('Your location has been suspended by the council/admin', 'Location Suspended')
+            .onTap.pipe(take(1)).subscribe(() =>  this.router.navigate(['dashboard/locations']));
+        });
+
         this.userService.getUserByUid(user.uid).subscribe((response: APIResponse) => {
           if (response.success && tokenResult.claims.userType === 1 && !response.data.stripeToken) {
             this.router.navigate(['paymentinformation']);

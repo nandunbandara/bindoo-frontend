@@ -56,4 +56,8 @@ export class LocationsViewComponent implements OnInit {
     });
   }
 
+  public remove(id: string) {
+    // this.locationService.
+  }
+
 }

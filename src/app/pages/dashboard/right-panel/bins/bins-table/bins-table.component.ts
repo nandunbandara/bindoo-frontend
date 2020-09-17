@@ -33,7 +33,6 @@ export class BinsTableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getBinsByUser();
     this.authService.getIdTokenResult().then(tokenResult => {
       this.userType = tokenResult.claims.userType;
       this.councilUid = tokenResult.claims.councilId;
@@ -49,6 +48,7 @@ export class BinsTableComponent implements OnInit {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = user;
       this.binService.getAllBinsByUser(this.user.uid).subscribe((response: APIResponse) => {
+        console.log(response.data);
         this.bins = new MatTableDataSource<any>(response.data);
       });
     });
@@ -57,6 +57,7 @@ export class BinsTableComponent implements OnInit {
   private getBinsByCouncilAndStatus() {
     this.binService.getBinByCouncilAndStatus(this.councilUid, true).subscribe((response: APIResponse) => {
       this.bins = new MatTableDataSource<any>(response.data);
+      console.log(response.data);
     });
   }
 

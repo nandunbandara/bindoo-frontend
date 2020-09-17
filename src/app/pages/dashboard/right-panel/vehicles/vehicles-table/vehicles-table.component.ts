@@ -15,7 +15,7 @@ const ELEMENT_DATA = [
 })
 export class VehiclesTableComponent implements OnInit{
 
-  displayedColumns: string[] = ['registrationNo', 'model', 'make', 'capacity'];
+  displayedColumns: string[] = ['registrationNo', 'model', 'make', 'capacity', 'actions'];
   dataSource: MatTableDataSource<any>;
 
   constructor(
