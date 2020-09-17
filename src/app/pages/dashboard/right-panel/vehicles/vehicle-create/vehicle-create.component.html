@@ -15,31 +15,31 @@
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Registration No.</mat-label>
-          <input matInput placeholder="Registration No." name="registrationNo" ngModel required>
+          <input matInput placeholder="Registration No." name="registrationNo" [(ngModel)]="registration_number" required>
         </mat-form-field>
       </div>
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Model</mat-label>
-          <input matInput placeholder="Model" name="model" ngModel required>
+          <input matInput placeholder="Model" name="model" [(ngModel)]="model" required>
         </mat-form-field>
       </div>
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Make</mat-label>
-          <input matInput placeholder="Make" name="make" ngModel required>
+          <input matInput placeholder="Make" name="make" [(ngModel)]="make" required>
         </mat-form-field>
       </div>
       <div class="col-md-3">
         <mat-form-field appearance="outline">
           <mat-label>Capacity</mat-label>
-          <input matInput placeholder="Capacity" name="capacity" ngModel required>
+          <input matInput placeholder="Capacity" name="capacity" [(ngModel)]="capacity" required>
         </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <button mat-raised-button color="primary" type="submit">Save vehicle</button>
+        <button mat-raised-button color="primary" type="submit" (click)="save()">Save vehicle</button>
       </div>
     </div>
   </form>
