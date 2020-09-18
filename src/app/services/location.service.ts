@@ -23,6 +23,10 @@ export class LocationService {
     return this.http.get(`${environment.apihost}/users/${uid}/locations/verified/${verified}`);
   }
 
+  public getLocationsByCouncilAndStatus(councilUid: string, verified: boolean) {
+    return this.http.get(`${environment.apihost}/councils/${councilUid}/locations/verified/${verified}`);
+  }
+
   public getLocationsByCouncil(councilId: string) {
     return this.http.get(`${environment.apihost}/councils/${councilId}/locations`);
   }
@@ -36,6 +40,10 @@ export class LocationService {
 
   public approveLocation(id: string) {
     return this.http.put(`${environment.apihost}/locations/${id}/verified`, {});
+  }
+
+  public suspendLocation(id: string, status) {
+    return this.http.put(`${environment.apihost}/locations/${id}/status`, { status });
   }
 
 }

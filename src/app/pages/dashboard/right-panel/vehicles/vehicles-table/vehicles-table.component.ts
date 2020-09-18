@@ -3,6 +3,7 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 import { MatTableDataSource } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
 import { idTokenResult } from '@angular/fire/auth-guard';
+import { APIResponse } from 'src/app/helpers/api-response';
 
 const ELEMENT_DATA = [
   { registrationNo: 'WP LA 8766', model: 'Truck', make: 'Toyota', capacity: '20l' }

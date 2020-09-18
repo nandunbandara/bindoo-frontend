@@ -26,4 +26,8 @@ export class BinsService {
   public getBinByCouncilAndStatus(councilUid: string, readyForPickup: boolean) {
     return this.http.get(`${environment.apihost}/councils/${councilUid}/bins/readyForCollection/${readyForPickup}`);
   }
+
+  public getBinsByCouncil(councilUid: string) {
+    return this.http.get(`${environment.apihost}/councils/${councilUid}/bins`);
+  }
 }

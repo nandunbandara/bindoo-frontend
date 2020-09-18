@@ -38,7 +38,9 @@
       <ng-container matColumnDef="verified">
         <th mat-header-cell *matHeaderCellDef>Approved</th>
         <td mat-cell *matCellDef="let element">
-          <span class="badge" [class.badge-success]="element.verified" [class.badge-danger]="!element.verified">{{element.verified ? 'Approved' : 'Pending Approval'}}</span>
+          <span class="badge badge-success" *ngIf="element.verified && element.status === 'active'">Approved</span>
+          <span class="badge badge-danger" *ngIf="!element.verified && element.status === 'active'">Pending Verification</span>
+          <span class="badge badge-danger" *ngIf="element.status === 'suspended'">Suspended</span>
         </td>
       </ng-container>
     
@@ -48,8 +50,8 @@
         <td mat-cell *matCellDef="let element">
           <button mat-flat-button color="primary" *ngIf="userType === 1 || userType === 3 || userType === 2">View</button>
           <button mat-stroked-button color="warn" *ngIf="userType === 1" (click)="remove(element.id)">Remove</button>
-          <button mat-stroked-button color="warn" *ngIf="userType === 2 || userType === 3" (click)="suspend(element.id)">Suspend</button>
-          <button mat-flat-button color="primary" *ngIf="(userType === 2 || userType === 3) && !element.verified" (click)="approve(element.id)">Approve</button>
+          <button mat-stroked-button color="warn" *ngIf="(userType === 2 || userType === 3) && element.status ==='active'" (click)="suspend(element.id)">Suspend</button>
+          <button mat-flat-button color="primary" *ngIf="(userType === 2 || userType === 3) && (!element.verified || element.status === 'suspended')" (click)="approve(element.id)">Approve</button>
         </td>
       </ng-container>
     

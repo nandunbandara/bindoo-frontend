@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
         });
 
         channel.bind('location_suspended', data => {
-          this.toast.info('Your location has been suspended by the council/admin', 'Location Suspended')
+          this.toast.error('Your location has been suspended by the council/admin', 'Location Suspended')
             .onTap.pipe(take(1)).subscribe(() =>  this.router.navigate(['dashboard/locations']));
         });
 

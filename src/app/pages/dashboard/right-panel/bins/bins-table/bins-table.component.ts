@@ -27,6 +27,8 @@ export class BinsTableComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'description', 'location', 'capacity', 'action'];
 
+  all = true;
+
   constructor(
     private binService: BinsService,
     private authService: AuthService
@@ -55,16 +57,24 @@ export class BinsTableComponent implements OnInit {
   }
 
   private getBinsByCouncilAndStatus() {
+    this.all = false
     this.binService.getBinByCouncilAndStatus(this.councilUid, true).subscribe((response: APIResponse) => {
       this.bins = new MatTableDataSource<any>(response.data);
       console.log(response.data);
     });
   }
 
+  private getAllBinsByCouncil() {
+    this.all = true;
+    this.binService.getBinsByCouncil(this.councilUid).subscribe((response: APIResponse) => {
+      this.bins = new MatTableDataSource<any>(response.data);
+    });
+  }
+
   public markReadyToPickup(id: string) {
     this.binService.markAsReadyForPickup(id).subscribe((response: APIResponse) => {
       this.getBinsByUser();
-    })
+    });
   }
 
 }

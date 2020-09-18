@@ -54,7 +54,7 @@
         </li>
       </a>
 
-      <a routerLink="recyclable-items">
+      <a routerLink="recyclable-items" *ngIf="tokenResult.claims.userType === 1">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-recycle.svg" alt="Store icon">
           <p>Recyclable Items</p>
@@ -68,7 +68,7 @@
         </li>
       </a> -->
 
-      <a routerLink="store">
+      <a routerLink="store" *ngIf="tokenResult.claims.userType === 1">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-store.svg" alt="Store icon">
           <p>Store</p>

@@ -60,4 +60,10 @@ export class LocationsViewComponent implements OnInit {
     // this.locationService.
   }
 
+  public suspend(id: string) {
+    this.locationService.suspendLocation(id, 'suspended').subscribe((response: APIResponse) => {
+      this.getLocations();
+    });
+  }
+
 }

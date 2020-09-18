@@ -56,3 +56,7 @@ a:hover {
     position: relative;
     top: 100px;
 }
+
+button {
+    margin-right: 10px;
+}
