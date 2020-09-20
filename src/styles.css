@@ -78,3 +78,31 @@ button {
     transform: translateY(-1.1em) scale(.75);
     width: 133.33333%;
 }
+
+
+.dropzone { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  min-width: 60vw;
+  font-weight: 200;
+  height: 300px;
+  border: 2px dashed #5b24f1;
+  border-radius: 5px;
+  background: white;
+  margin: 10px 0;  
+}
+
+.dropzone:hover {
+  border: 2px solid #2432f1;
+  color: #dadada !important;    
+}
+
+.dropzone .file-label {
+  font-size: 1.2em;
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}

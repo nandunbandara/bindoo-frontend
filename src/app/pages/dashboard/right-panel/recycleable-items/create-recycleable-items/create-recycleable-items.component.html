@@ -10,7 +10,7 @@
   <form>
     <div class="row">
       <div class="col-md-12">
-        <p class="form-title">Recyclable Item details</p>
+        <p class="form-title">Item Details</p>
       </div>
     </div>
 
@@ -19,6 +19,17 @@
         <mat-form-field appearance="outline">
           <mat-label>Title</mat-label>
           <input matInput placeholder="Name" name="name" [(ngModel)]="name" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Organization</mat-label>
+          <mat-select [(ngModel)]="organizationUid" name="organization">
+            <mat-option *ngFor="let org of organizations" [value]="org.id">
+              {{org.name}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
@@ -33,9 +44,43 @@
       </div>
     </div>
 
+    <hr>
+    <p class="form-title" *ngIf="!photo">Upload Image</p>
+    <p class="form-title" *ngIf="photo">Image</p>
+
+    <!-- File upload -->
+    <div *ngIf="!photo" class="dropzone" 
+        dropzone
+        (hovered)="toggleHover($event)"
+        (dropped)="onDrop($event)"
+        [class.hovering]="isHovering">
+        <p *ngIf="!snapshot">Drag and Drop a File</p>
+        <button *ngIf="!snapshot" mat-flat-button color="warn" (click)="openFileBrowser()">Select File</button>
+        <input #fileSelector type="file" accept=".jpg, .jpeg" hidden (change)="onFileSelected($event)">
+
+
+        <div *ngIf="percentage | async as pct">
+          <progress [value]="pct" max="100"></progress>
+          {{ pct | number }}%
+        </div>
+        
+        
+        
+        <div *ngIf="snapshot | async as snap">
+        
+          {{ snap.bytesTransferred }} bytes of {{ snap.totalBytes }} bytes
+      
+        </div>
+
+    </div>
+
+    <div *ngIf="photo as url" style="margin-bottom: 1.5rem;">
+      <img [src]="url" width="200"><br>
+    </div> 
+
     <div class="row">
       <div class="col-md-12">
-        <button mat-raised-button color="primary" type="submit" (click)="save()">Create Organization</button>
+        <button mat-raised-button color="primary" type="submit" (click)="createItem()">Create Recyclable Item</button>
       </div>
     </div>
   </form>

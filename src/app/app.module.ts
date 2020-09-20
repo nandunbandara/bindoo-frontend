@@ -51,6 +51,8 @@ import { RecycleableItemsViewComponent } from './pages/dashboard/right-panel/rec
 import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/create-recycleable-items/create-recycleable-items.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { DropzoneDirective } from './directives/dropzone.directive';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,8 @@ import { ToastrModule } from 'ngx-toastr';
     CreateCouncilComponent,
     RecycleableItemsComponent,
     RecycleableItemsViewComponent,
-    CreateRecycleableItemsComponent
+    CreateRecycleableItemsComponent,
+    DropzoneDirective
   ],
   imports: [
     BrowserModule,
@@ -95,6 +98,7 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthGuardModule,
+    AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
