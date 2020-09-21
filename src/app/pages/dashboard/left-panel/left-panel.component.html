@@ -61,6 +61,13 @@
         </li>
       </a>
 
+      <a routerLink="lanes" *ngIf="tokenResult.claims.userType === 2">
+        <li routerLinkActive="is-active">
+          <img src="/assets/icons/icon-lanes.svg" alt="Store icon">
+          <p>Lanes</p>
+        </li>
+      </a>
+
       <!-- <a routerLink="store">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-store.svg" alt="Store icon">
