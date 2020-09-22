@@ -53,6 +53,9 @@ import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/r
 import { ToastrModule } from 'ngx-toastr';
 import { DropzoneDirective } from './directives/dropzone.directive';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { LanesComponent } from './pages/dashboard/right-panel/lanes/lanes.component';
+import { CreateLaneComponent } from './pages/dashboard/right-panel/lanes/create-lane/create-lane.component';
+import { ViewLanesComponent } from './pages/dashboard/right-panel/lanes/view-lanes/view-lanes.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     RecycleableItemsComponent,
     RecycleableItemsViewComponent,
     CreateRecycleableItemsComponent,
-    DropzoneDirective
+    DropzoneDirective,
+    LanesComponent,
+    CreateLaneComponent,
+    ViewLanesComponent
   ],
   imports: [
     BrowserModule,

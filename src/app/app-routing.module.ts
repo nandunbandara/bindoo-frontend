@@ -31,6 +31,9 @@ import { CreateCouncilComponent } from './pages/dashboard/right-panel/councils/c
 import { RecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items.component';
 import { RecycleableItemsViewComponent } from './pages/dashboard/right-panel/recycleable-items/recycleable-items-view/recycleable-items-view.component';
 import { CreateRecycleableItemsComponent } from './pages/dashboard/right-panel/recycleable-items/create-recycleable-items/create-recycleable-items.component';
+import { LanesComponent } from './pages/dashboard/right-panel/lanes/lanes.component';
+import { ViewLanesComponent } from './pages/dashboard/right-panel/lanes/view-lanes/view-lanes.component';
+import { CreateLaneComponent } from './pages/dashboard/right-panel/lanes/create-lane/create-lane.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['dashboard']);
@@ -91,6 +94,12 @@ const routes: Routes = [
         path: 'recyclable-items', component: RecycleableItemsComponent, children: [
           { path: '', component: RecycleableItemsViewComponent },
           { path: 'add', component: CreateRecycleableItemsComponent }
+        ]
+      },
+      {
+        path: 'lanes', component: LanesComponent, children: [
+          { path: '', component: ViewLanesComponent },
+          { path: 'add', component: CreateLaneComponent }
         ]
       },
       { path: 'store', component: StoreComponent },

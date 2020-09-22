@@ -1,0 +1,45 @@
+<header>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Lanes</h3><br>
+      <small style="position: relative; top: -5px; margin-bottom: 1.5rem;">Find all lanes created by you here</small><br>
+      <button mat-raised-button color="primary" routerLink="add">+ Add Lane</button>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Find locations using name and address">
+        <mat-hint>Find lanes using their name</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-md-12">
+    <table mat-table [dataSource]="lanes" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+      </ng-container>
+    
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <button mat-stroked-button color="primary">View</button> -->
+          <button mat-stroked-button color="warn" (click)="removeCouncil(element.uid)">Remove</button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
