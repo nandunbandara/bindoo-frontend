@@ -11,6 +11,7 @@ import { StatisticsService } from 'src/app/services/statistics.service';
 import { APIResponse } from 'src/app/helpers/api-response';
 import { AuthService } from 'src/app/services/auth.service';
 import { idTokenResult } from '@angular/fire/auth-guard';
+import { LaneService } from 'src/app/services/lane.service';
 
 export interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -37,12 +38,16 @@ export class AnalyticsComponent implements OnInit {
 
   public idTokenResult;
 
+  public garbage;
+  public uid;
+
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<any>;
 
   constructor(
     private statisticsService: StatisticsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private laneService: LaneService
   ) { 
 
     this.chartOptions = {
@@ -76,12 +81,20 @@ export class AnalyticsComponent implements OnInit {
   ngOnInit() {
     this.authService.getIdTokenResult().then(token => {
       this.idTokenResult = token;
+      this.uid = token.claims.user_id;
+
       this.getOrganizationCount();
       this.getLocationsCount();
       this.getPVLocationsCount();
       this.getVehicleCount();
       this.getLocationCountByUser();
       this.getBinCountByUser();
+
+      if (this.idTokenResult.claims.userType === 2) {
+        this.laneService.getGarbageByLanesAndCouncil(this.uid).subscribe((response: APIResponse) => {
+          this.garbage = response.data;
+        })
+      }
     });
   }
 

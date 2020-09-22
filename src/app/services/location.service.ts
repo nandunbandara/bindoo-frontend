@@ -32,9 +32,9 @@ export class LocationService {
   }
 
   public createLocation(name: string, description: string, type: number, building_number: string,
-                 line_1: string, line_2: string, city: string, uid: string, councilId: string) {
+                 line_1: string, line_2: string, city: string, uid: string, councilId: string, laneId: string, tax_id: string) {
     return this.http.post(`${environment.apihost}/users/${uid}/locations`, {
-      name, description, type, building_number, line_1, line_2, city, councilId
+      name, description, type, building_number, line_1, line_2, city, councilId, laneId, tax_id,
     });
   }
 

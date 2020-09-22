@@ -33,12 +33,23 @@
     </div>
 
     <div class="row" style="margin-bottom: 1.5rem;">
-      <div class="col-md-9">
+      <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Municipal Council</mat-label>
-          <mat-select name="councilUid" [(ngModel)]="councilUid" required>
+          <mat-select name="councilUid" [(ngModel)]="councilUid" required (ngModelChange)="loadLanes()">
             <mat-option *ngFor="let c of Councils" [value]="c.uid">
               {{c.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Lane / Zone</mat-label>
+          <mat-select name="councilUid" [(ngModel)]="laneId" required>
+            <mat-option *ngFor="let l of lanes" [value]="l.id">
+              {{l.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>

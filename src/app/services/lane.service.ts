@@ -18,4 +18,8 @@ export class LaneService {
   public createLane(name: string, councilUid: string) {
     return this.http.post(`${environment.apihost}/lanes`, { name, councilUid });
   }
+
+  public getGarbageByLanesAndCouncil(councilUid) {
+    return this.http.get(`${environment.apihost}/councils/${councilUid}/lanes/garbage`);
+  }
 }

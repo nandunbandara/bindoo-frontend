@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LocationService } from 'src/app/services/location.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { LaneService } from 'src/app/services/lane.service';
 
 @Component({
   selector: 'app-create-location',
@@ -22,6 +23,8 @@ export class CreateLocationComponent implements OnInit {
   public line_1;
   public line_2;
   public city;
+  public lanes;
+  public laneId;
 
   private user;
 
@@ -31,7 +34,8 @@ export class CreateLocationComponent implements OnInit {
     private locationService: LocationService,
     private authService: AuthService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private laneService: LaneService
   ) { }
 
   ngOnInit() {
@@ -54,10 +58,16 @@ export class CreateLocationComponent implements OnInit {
       this.name, this.description, 1, 
       this.building_number, this.line_1, 
       this.line_2, this.city, this.user.uid, 
-      this.councilUid).subscribe((response: APIResponse) => {
+      this.councilUid, this.laneId, this.tax_id).subscribe((response: APIResponse) => {
       this.router.navigate(['/dashboard/locations']);
     }, (err) => {
       this.snackbar.open(err.message, null, { duration: 2000 });
+    });
+  }
+
+  public loadLanes() {
+    return this.laneService.getLanesByCouncil(this.councilUid).subscribe((response: APIResponse) => {
+      this.lanes = response.data;
     });
   }
 }
