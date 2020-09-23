@@ -22,6 +22,7 @@ export class PaymentInformationComponent implements OnInit, AfterViewInit {
   public cvc: string;
   public cardType: string;
   public cardTypeImgUrl: string;
+  public error;
 
   @ViewChild('cardInfo') cardInfo: ElementRef;
 

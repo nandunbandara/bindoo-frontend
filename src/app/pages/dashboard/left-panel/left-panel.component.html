@@ -89,7 +89,7 @@
         </li>
       </a>
 
-      <a routerLink="invoices">
+      <a routerLink="invoices" *ngIf="tokenResult.claims.userType === 1">
         <li routerLinkActive="is-active">
           <img src="/assets/icons/icon-invoices.svg" alt="Vehicle icon">
           <p>Invoices</p>

@@ -10,5 +10,6 @@ export const environment = {
     appId: '1:397420758816:web:33c76cab042ffe0d9c7945',
     measurementId: 'G-YWG1NZTD34'
   },
-  apihost: 'https://api.wms.nandunb.me'
+  apihost: 'https://api.wms.nandunb.me',
+  stripeKey: 'pk_test_G8JlYKmnoVH32YX9GshEocHn00GqqeLjnw'
 };

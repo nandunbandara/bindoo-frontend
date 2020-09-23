@@ -138,7 +138,71 @@
     
   </div>
 
-  <div class="row">
+  <!-- Council -->
+  <div class="row" *ngIf="idTokenResult && idTokenResult.claims.userType === 2">
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{locationCountByCouncil}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Locations</p>
+            <p class="count-hint">Registered locations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{binCouncilCount || 0}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Bins</p>
+            <p class="count-hint">Number of Bins in locations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{readyBinCount || 0}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Ready For Pickup</p>
+            <p class="count-hint">Bins to be cleared</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="stat-card">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="count">{{vehicleCount}}</span>
+          </div>
+          <div class="col-md-8 separator" style="text-align: left;">
+            <p class="count-label">Recycled Items</p>
+            <p class="count-hint">Recyclable items de-cluttered</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="row" style="margin-bottom: 1.5rem;">
     <div class="col-md-6">
       <h5 class="section-header">Garbage Collected By Month</h5>
       <div class="chart-wrapper">
@@ -151,21 +215,99 @@
     </div>
     
     <div class="col-md-6" *ngIf="idTokenResult && idTokenResult.claims.userType === 2">
-      <h5 class="section-header">Pickup List</h5>
+      <div class="row" style="margin-top: 1.5rem;">
+        <div class="col-md-6">
+          <h5 class="section-header">Vehicle Allocations</h5>
+        </div>
+        <div class="col-md-6">
+          <!-- <button mat-stroked-button color="warn" style="float: right;" (click)="discardPickupList()" *ngIf="pickuplist && pickuplist.length > 0">Discard Pickup List</button> -->
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="pickup-list-item" *ngFor="let item of garbage">
+          <div class="text-center" *ngIf="vehicleAllocations && vehicleAllocations.length === 0" style="margin-top: 1.5rem;">
+            <small style="color: #999">No allocations for vehicles today!</small><br>
+          </div>
+          <div class="pickup-list-item" *ngFor="let item of vehicleAllocations" 
+          [style.background-color]="item.available === 0 ? '#ff9494': item.available / item.capacity < 0.4 ? '#faef91' :'white'">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3" style="position: relative; top: 10px;">
+                <small>Vehicle</small>
+                <p>{{item.registration_number}} | {{item.model}} - {{item.make}}</p>
+              </div>
+              <div class="col-md-3 text-center" style="position: relative; top: 10px;">
+                <small>Capacity</small>
+                <p>{{item.capacity}} L</p>
+              </div>
+              
+              <div class="col-md-3 text-center" style="position: relative; top: 10px;">
+                <small>Allocated</small>
+                <p>{{item.allocated_amount}} L</p>
+              </div>
+
+              <div class="col-md-3 text-center" style="position: relative; top: 10px;">
+                <small>Available</small>
+                <p>{{item.available}} L</p>
+              </div>
+            </div>
+          </div>
+          
+
+
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="idTokenResult && idTokenResult.claims.userType === 2">
+      <div class="row" style="margin-top: 1.5rem;">
+        <div class="col-md-6">
+          <h5 class="section-header">Pickup List</h5>
+        </div>
+        <div class="col-md-6">
+          <button mat-stroked-button color="warn" style="float: right;" (click)="discardPickupList()" *ngIf="pickuplist && pickuplist.length > 0">Discard Pickup List</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center" *ngIf="pickuplist && pickuplist.length === 0" style="margin-top: 1.5rem;">
+            <small style="color: #999">Pickup list has not been generated for today!</small><br>
+            <button mat-flat-button color="primary" (click)="createPickupList()" style="margin-top: 0.5rem;">Generate Pick Up List</button>
+          </div>
+          <div class="pickup-list-item" *ngFor="let item of pickuplist">
+            <div class="row">
+              <div class="col-md-2" style="position: relative; top: 10px;">
                 <small>Lane / Zone</small>
                 <p>{{item.name}}</p>
               </div>
-              <div class="col-md-4 text-center">
+              <div class="col-md-2 text-center" style="position: relative; top: 10px;">
                 <small>Quantity</small>
-                <p>{{item.total}} L</p>
+                <p>{{item.amount}} L</p>
+              </div>
+              <div class="col-md-2">
+                <span class="badge" 
+                [class.badge-success]="item.status === 'allocated' || item.status === 'completed'" 
+                [class.badge-danger]="item.status === 'unallocated'" style="position: relative; top: 25px;">
+                  {{ item.status | titlecase }}
+                </span>
               </div>
               <div class="col-md-4">
-                <button mat-flat-button color="primary">Mark as Done</button>
+                <mat-form-field appearance="outline" style="width: 100%" *ngIf="item.status !== 'completed'">
+                  <mat-label>Vehicle</mat-label>
+                  <mat-select [name]="item.id" [(ngModel)]="item.vehicleId" [disabled]="item.status === 'allocated'">
+                    <mat-option *ngFor="let v of vehicleAllocations" [value]="v.id" [disabled]="v.available < item.amount">
+                      {{v.registration_number}} | {{v.make}} - {{v.model}} | Available Capacity: {{v.available}} L
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <button mat-flat-button color="primary" style="float: right;" *ngIf="item.status === 'unallocated'" (click)="createAllocation(item.pickupListItemId, item.laneId, item.vehicleId, item.amount)">Allocate / Dispatch Vehicle</button>
+                <button mat-flat-button color="accent" style="float: right;" *ngIf="item.status === 'allocated'" (click)="completeAllocation(item.laneId, item.amount, item.pickupListItemId, item.allocationId)" style="width: 100%; margin-bottom: 5px;">Complete Allocation</button>
+                <button mat-flat-button color="warn" style="float: right;" *ngIf="item.status === 'allocated'" (click)="removeAllocation(item.allocationId, item.pickupListItemId)" style="width: 100%;">Cancel Allocation</button>
               </div>
             </div>
           </div>
@@ -180,5 +322,7 @@
       </div>
       
     </div>
+
+    
   </div>
 </div>

@@ -56,8 +56,8 @@
 }
 
 .pickup-list-item small {
-    font-weight: 400;
-    color: #ccc;
+    font-weight: 500;
+    color: rgb(37, 37, 37);
 }
 
 .pickup-list-item p {

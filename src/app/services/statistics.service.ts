@@ -24,7 +24,7 @@ export class StatisticsService {
   }
 
   getLocationsByCouncil(councilId: string) {
-    return this.http.get(`${environment.apihost}/councils/${councilId}/count`);
+    return this.http.get(`${environment.apihost}/councils/${councilId}/locations/count`);
   }
 
   getPVLocationCount() {

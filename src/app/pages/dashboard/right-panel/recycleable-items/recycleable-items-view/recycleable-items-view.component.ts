@@ -21,6 +21,7 @@ export class RecycleableItemsViewComponent implements OnInit {
   userType;
 
   displayedColumns: string[] = ['name', 'description', 'status', 'actions'];
+  organizations;
 
   constructor(
     private recyclableItemService: RecyclableItemService,
