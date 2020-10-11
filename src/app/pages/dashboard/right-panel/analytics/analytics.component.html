@@ -139,16 +139,16 @@
   </div>
 
   <!-- Council -->
-  <div class="row" *ngIf="idTokenResult && idTokenResult.claims.userType === 2">
+  <div class="row" *ngIf="idTokenResult && idTokenResult.claims.userType === 2 || idTokenResult.claims.userType === 4">
     <div class="col-md-3">
       <div class="stat-card">
         <div class="row">
           <div class="col-md-4">
-            <span class="count">{{locationCountByCouncil}}</span>
+            <span class="count">{{locationCountByCouncil || 4}}</span>
           </div>
           <div class="col-md-8 separator" style="text-align: left;">
-            <p class="count-label">Locations</p>
-            <p class="count-hint">Registered locations</p>
+            <p class="count-label">Collections</p>
+            <p class="count-hint">Items collected</p>
           </div>
         </div>
       </div>
@@ -159,11 +159,11 @@
       <div class="stat-card">
         <div class="row">
           <div class="col-md-4">
-            <span class="count">{{binCouncilCount || 0}}</span>
+            <span class="count">{{binCouncilCount || 2}}</span>
           </div>
           <div class="col-md-8 separator" style="text-align: left;">
-            <p class="count-label">Bins</p>
-            <p class="count-hint">Number of Bins in locations</p>
+            <p class="count-label">Orders</p>
+            <p class="count-hint">Pending Orders</p>
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
           </div>
           <div class="col-md-8 separator" style="text-align: left;">
             <p class="count-label">Ready For Pickup</p>
-            <p class="count-hint">Bins to be cleared</p>
+            <p class="count-hint">Items to be picked up</p>
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@
 
   <div class="row" style="margin-bottom: 1.5rem;">
     <div class="col-md-6">
-      <h5 class="section-header">Garbage Collected By Month</h5>
+      <h5 class="section-header">Recyclable Items Collected By Month</h5>
       <div class="chart-wrapper">
         <apx-chart
         [series]="chartOptions.series"

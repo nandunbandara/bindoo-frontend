@@ -70,7 +70,7 @@ export class AnalyticsComponent implements OnInit {
       series: [
         {
           name: 'Garbage Collected',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0]
         },
         ],
         chart: {
@@ -101,7 +101,7 @@ export class AnalyticsComponent implements OnInit {
       if (this.idTokenResult.claims.userType === 2) {
         this.loadPickupList();
         this.loadVehicleAllocations();
-        this.getCollections();
+        // this.getCollections();
         this.getLocationCountByCouncil();
         this.loadBins();
         this.readyBins();
